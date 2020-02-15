@@ -1,0 +1,37 @@
+package com.fly.tour.db
+
+import android.content.ContentValues
+import android.content.Context
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
+
+/**
+ * Description: <NewsDBHelper><br></br>
+ * Author:      mxdl<br></br>
+ * Date:        2019/5/24<br></br>
+ * Version:     V1.0.0<br></br>
+ * Update:     <br></br>
+</NewsDBHelper> */
+class NewsDBHelper private constructor(context: Context) : SQLiteOpenHelper(context, NewsDBConfig.DB_NAME, null, NewsDBConfig.VERSION_CODE) {
+
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+
+    }
+
+    override fun onCreate(db: SQLiteDatabase) {
+        db.execSQL(NewsDBConfig.NewsType.CREATE_TABLE)
+        db.execSQL(NewsDBConfig.NewsDetail.CREATE_TABLE)
+    }
+
+    companion object {
+        private var mNewsDBHelper: NewsDBHelper? = null
+        fun getInstance(context: Context): NewsDBHelper? {
+            if (mNewsDBHelper == null) {
+                synchronized(NewsDBHelper::class.java) {
+                    mNewsDBHelper = NewsDBHelper(context)
+                }
+            }
+            return mNewsDBHelper
+        }
+    }
+}

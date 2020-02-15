@@ -1,0 +1,2 @@
+include ':module_app', ':lib_common', ':lib_refresh_layout', ':lib_fly_db', ':module_main', ':module_find', ':module_me', ':module_news'
+rootProject.name='android-mvp-flytour-kotlin'
