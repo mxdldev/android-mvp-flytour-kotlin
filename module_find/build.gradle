@@ -5,6 +5,14 @@ if (isModule.toBoolean()) {
 }
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
 android {
     compileSdkVersion build_versions.compile_sdk
     buildToolsVersion build_versions.build_sdk
@@ -16,11 +24,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
     }
 
     buildTypes {
@@ -49,6 +52,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':lib_common')
     annotationProcessor deps.arouter_compiler
+    kapt deps.arouter_compiler
     annotationProcessor deps.glide_compiler
     annotationProcessor deps.dagger_compiler
 }

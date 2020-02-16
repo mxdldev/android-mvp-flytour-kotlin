@@ -30,7 +30,7 @@ import org.greenrobot.eventbus.ThreadMode
  * Version:     V1.0.0<br></br>
  * Update:     <br></br>
 </BaseFragment> */
-abstract class BaseFragment : androidx.fragment.app.Fragment(), BaseView {
+abstract class BaseFragment : Fragment(), BaseView {
     protected lateinit var mActivity: RxAppCompatActivity
     protected lateinit var mView: View
     protected var mTxtTitle: TextView? = null

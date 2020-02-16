@@ -1,6 +1,14 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
 android {
     compileSdkVersion build_versions.compile_sdk
     buildToolsVersion build_versions.build_sdk
@@ -14,11 +22,7 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
+
         ndk {
             abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
         }
@@ -47,7 +51,7 @@ dependencies {
     api deps.androidx_recyclerview
     api deps.android_material
 
-    api deps.arouter_api
+
     api deps.rxpermissions
     api deps.eventbus;
     api deps.MultiImageSelector
@@ -68,5 +72,7 @@ dependencies {
     api deps.stetho
 
     annotationProcessor deps.glide_compiler
-    annotationProcessor deps.arouter_compiler
+
+    api deps.arouter_api
+    kapt deps.arouter_compiler
 }

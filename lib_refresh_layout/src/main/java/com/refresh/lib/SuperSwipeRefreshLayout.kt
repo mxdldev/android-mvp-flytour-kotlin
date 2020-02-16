@@ -53,7 +53,8 @@ import android.widget.ScrollView
  * 开发人员可以根据下拉过程中distance的值做一系列动画。 <br></br>
  */
 @SuppressLint("ClickableViewAccessibility")
-open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : ViewGroup(context, attrs) {
+open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
+    ViewGroup(context, attrs) {
 
     // SuperSwipeRefreshLayout内的目标View，比如RecyclerView,ListView,ScrollView,GridView
     // etc.
@@ -186,8 +187,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
                 } else {
                     endTarget = mSpinnerFinalOffset.toInt()
                 }
-                setTargetOffsetTopAndBottom(endTarget - mCurrentTargetOffsetTop,
-                        true)
+                setTargetOffsetTopAndBottom(
+                    endTarget - mCurrentTargetOffsetTop,
+                    true
+                )
                 mNotify = false
                 startScaleUpAnimation(mRefreshListener)
             } else {
@@ -209,8 +212,8 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
                 if (mTarget is AbsListView) {
                     val absListView = mTarget as AbsListView?
                     return !(absListView!!.childCount > 0 && (absListView
-                            .firstVisiblePosition > 0 || absListView
-                            .getChildAt(0).top < absListView.paddingTop))
+                        .firstVisiblePosition > 0 || absListView
+                        .getChildAt(0).top < absListView.paddingTop))
                 } else {
                     return mTarget!!.scrollY <= 0
                 }
@@ -234,15 +237,17 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
                 val layoutManager = recyclerView!!.layoutManager
                 val count = recyclerView.adapter!!.itemCount
                 if (layoutManager is androidx.recyclerview.widget.LinearLayoutManager && count > 0) {
-                    val linearLayoutManager = layoutManager as androidx.recyclerview.widget.LinearLayoutManager?
+                    val linearLayoutManager =
+                        layoutManager as androidx.recyclerview.widget.LinearLayoutManager?
                     if (linearLayoutManager!!.findLastCompletelyVisibleItemPosition() == count - 1) {
                         return true
                     }
                 } else if (layoutManager is androidx.recyclerview.widget.StaggeredGridLayoutManager) {
-                    val staggeredGridLayoutManager = layoutManager as androidx.recyclerview.widget.StaggeredGridLayoutManager?
+                    val staggeredGridLayoutManager =
+                        layoutManager as androidx.recyclerview.widget.StaggeredGridLayoutManager?
                     val lastItems = IntArray(2)
                     staggeredGridLayoutManager!!
-                            .findLastCompletelyVisibleItemPositions(lastItems)
+                        .findLastCompletelyVisibleItemPositions(lastItems)
                     val lastItem = Math.max(lastItems[0], lastItems[1])
                     if (lastItem == count - 1) {
                         return true
@@ -254,7 +259,8 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
                 val count = absListView!!.adapter.count
                 val fristPos = absListView.firstVisiblePosition
                 if (fristPos == 0 && absListView.getChildAt(0).top >= absListView
-                                .paddingTop) {
+                        .paddingTop
+                ) {
                     return false
                 }
                 val lastPos = absListView.lastVisiblePosition
@@ -264,10 +270,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
             } else if (mTarget is ScrollView) {
                 val scrollView = mTarget as ScrollView?
                 val view = scrollView!!
-                        .getChildAt(scrollView.childCount - 1) as View
+                    .getChildAt(scrollView.childCount - 1) as View
                 if (view != null) {
                     val diff = view.bottom - (scrollView.height + scrollView
-                            .scrollY)
+                        .scrollY)
                     if (diff == 0) {
                         return true
                     }
@@ -291,7 +297,7 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
             var endTarget = 0
             if (!mUsingCustomStart) {
                 endTarget = (mSpinnerFinalOffset - Math
-                        .abs(mOriginalOffsetTop)).toInt()
+                    .abs(mOriginalOffsetTop)).toInt()
             } else {
                 endTarget = mSpinnerFinalOffset.toInt()
             }
@@ -339,7 +345,8 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
         usingDefaultHeader = false
         mHeadViewContainer!!.removeAllViews()
         val layoutParams = RelativeLayout.LayoutParams(
-                mHeaderViewWidth, mHeaderViewHeight)
+            mHeaderViewWidth, mHeaderViewHeight
+        )
         layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
         mHeadViewContainer!!.addView(child, layoutParams)
     }
@@ -353,7 +360,8 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
         }
         mFooterViewContainer!!.removeAllViews()
         val layoutParams = RelativeLayout.LayoutParams(
-                mFooterViewWidth, mFooterViewHeight)
+            mFooterViewWidth, mFooterViewHeight
+        )
         mFooterViewContainer!!.addView(child, layoutParams)
     }
 
@@ -367,19 +375,21 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
         mTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
 
         mMediumAnimationDuration = resources.getInteger(
-                android.R.integer.config_mediumAnimTime)
+            android.R.integer.config_mediumAnimTime
+        )
 
         setWillNotDraw(false)
         mDecelerateInterpolator = DecelerateInterpolator(
-                DECELERATE_INTERPOLATION_FACTOR)
+            DECELERATE_INTERPOLATION_FACTOR
+        )
 
         val a = context
-                .obtainStyledAttributes(attrs, LAYOUT_ATTRS)
+            .obtainStyledAttributes(attrs, LAYOUT_ATTRS)
         isEnabled = a.getBoolean(0, true)
         a.recycle()
 
         val wm = context
-                .getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            .getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val display = wm.defaultDisplay
         val metrics = resources.displayMetrics
         mHeaderViewWidth = display.width
@@ -434,8 +444,9 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
      */
     private fun createHeaderViewContainer() {
         val layoutParams = RelativeLayout.LayoutParams(
-                (mHeaderViewHeight * 0.8).toInt(),
-                (mHeaderViewHeight * 0.8).toInt())
+            (mHeaderViewHeight * 0.8).toInt(),
+            (mHeaderViewHeight * 0.8).toInt()
+        )
         layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL)
         layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
         mHeadViewContainer = HeadViewContainer(context)
@@ -474,15 +485,18 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
      * @param onPushLoadMoreListener
      */
     fun setOnPushLoadMoreListener(
-            onPushLoadMoreListener: OnPushLoadMoreListener) {
+        onPushLoadMoreListener: OnPushLoadMoreListener
+    ) {
         this.mOnPushLoadMoreListener = onPushLoadMoreListener
     }
 
     private fun startScaleUpAnimation(listener: AnimationListener?) {
         mHeadViewContainer!!.visibility = View.VISIBLE
         mScaleAnimation = object : Animation() {
-            public override fun applyTransformation(interpolatedTime: Float,
-                                                    t: Transformation) {
+            public override fun applyTransformation(
+                interpolatedTime: Float,
+                t: Transformation
+            ) {
                 setAnimationProgress(interpolatedTime)
             }
         }
@@ -509,8 +523,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
             ensureTarget()
             mRefreshing = refreshing
             if (mRefreshing) {
-                animateOffsetToCorrectPosition(mCurrentTargetOffsetTop,
-                        mRefreshListener)
+                animateOffsetToCorrectPosition(
+                    mCurrentTargetOffsetTop,
+                    mRefreshListener
+                )
             } else {
                 //startScaleDownAnimation(mRefreshListener);
                 animateOffsetToStartPosition(mCurrentTargetOffsetTop, mRefreshListener)
@@ -520,8 +536,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
 
     private fun startScaleDownAnimation(listener: AnimationListener?) {
         mScaleDownAnimation = object : Animation() {
-            public override fun applyTransformation(interpolatedTime: Float,
-                                                    t: Transformation) {
+            public override fun applyTransformation(
+                interpolatedTime: Float,
+                t: Transformation
+            ) {
                 setAnimationProgress(1 - interpolatedTime)
             }
         }
@@ -556,8 +574,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
         mTotalDragDistance = distance.toFloat()
     }
 
-    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int,
-                          bottom: Int) {
+    override fun onLayout(
+        changed: Boolean, left: Int, top: Int, right: Int,
+        bottom: Int
+    ) {
         val width = measuredWidth
         val height = measuredHeight
         if (childCount == 0) {
@@ -580,15 +600,27 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
         val childWidth = width - paddingLeft - paddingRight
         val childHeight = height - paddingTop - paddingBottom
         Log.d(LOG_TAG, "debug:onLayout childHeight = $childHeight")
-        child!!.layout(childLeft, childTop, childLeft + childWidth, childTop + childHeight)// 更新目标View的位置
+        child!!.layout(
+            childLeft,
+            childTop,
+            childLeft + childWidth,
+            childTop + childHeight
+        )// 更新目标View的位置
         val headViewWidth = mHeadViewContainer!!.measuredWidth
         val headViewHeight = mHeadViewContainer!!.measuredHeight
-        mHeadViewContainer!!.layout(width / 2 - headViewWidth / 2,
-                mCurrentTargetOffsetTop, width / 2 + headViewWidth / 2,
-                mCurrentTargetOffsetTop + headViewHeight)// 更新头布局的位置
+        mHeadViewContainer!!.layout(
+            width / 2 - headViewWidth / 2,
+            mCurrentTargetOffsetTop, width / 2 + headViewWidth / 2,
+            mCurrentTargetOffsetTop + headViewHeight
+        )// 更新头布局的位置
         val footViewWidth = mFooterViewContainer!!.measuredWidth
         val footViewHeight = mFooterViewContainer!!.measuredHeight
-        mFooterViewContainer!!.layout(width / 2 - footViewWidth / 2, height - pushDistance, width / 2 + footViewWidth / 2, height + footViewHeight - pushDistance)
+        mFooterViewContainer!!.layout(
+            width / 2 - footViewWidth / 2,
+            height - pushDistance,
+            width / 2 + footViewWidth / 2,
+            height + footViewHeight - pushDistance
+        )
     }
 
     public override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -599,21 +631,33 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
         if (mTarget == null) {
             return
         }
-        mTarget!!.measure(View.MeasureSpec.makeMeasureSpec(measuredWidth
-                - paddingLeft - paddingRight, View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(measuredHeight
+        mTarget!!.measure(
+            View.MeasureSpec.makeMeasureSpec(
+                measuredWidth
+                        - paddingLeft - paddingRight, View.MeasureSpec.EXACTLY
+            ),
+            View.MeasureSpec.makeMeasureSpec(
+                measuredHeight
                         - paddingTop - paddingBottom,
-                        View.MeasureSpec.EXACTLY))
-        mHeadViewContainer!!.measure(View.MeasureSpec.makeMeasureSpec(
-                mHeaderViewWidth, View.MeasureSpec.EXACTLY), View.MeasureSpec
-                .makeMeasureSpec(3 * mHeaderViewHeight, View.MeasureSpec.EXACTLY))
-        mFooterViewContainer!!.measure(View.MeasureSpec.makeMeasureSpec(
-                mFooterViewWidth, View.MeasureSpec.EXACTLY), View.MeasureSpec
-                .makeMeasureSpec(mFooterViewHeight, View.MeasureSpec.EXACTLY))
+                View.MeasureSpec.EXACTLY
+            )
+        )
+        mHeadViewContainer!!.measure(
+            View.MeasureSpec.makeMeasureSpec(
+                mHeaderViewWidth, View.MeasureSpec.EXACTLY
+            ), View.MeasureSpec
+                .makeMeasureSpec(3 * mHeaderViewHeight, View.MeasureSpec.EXACTLY)
+        )
+        mFooterViewContainer!!.measure(
+            View.MeasureSpec.makeMeasureSpec(
+                mFooterViewWidth, View.MeasureSpec.EXACTLY
+            ), View.MeasureSpec
+                .makeMeasureSpec(mFooterViewHeight, View.MeasureSpec.EXACTLY)
+        )
         if (!mUsingCustomStart && !mOriginalOffsetCalculated) {
             mOriginalOffsetCalculated = true
             mOriginalOffsetTop = -mHeadViewContainer!!
-                    .measuredHeight
+                .measuredHeight
             mCurrentTargetOffsetTop = mOriginalOffsetTop
             updateListenerCallBack()
         }
@@ -647,7 +691,8 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
             mReturningToStart = false
         }
         if (!isEnabled || mReturningToStart || mRefreshing || mLoadMore
-                || !isChildScrollToTop && !isChildScrollToBottom) {
+            || !isChildScrollToTop && !isChildScrollToBottom
+        ) {
             // 如果子View可以滑动，不拦截事件，交给子View处理-下拉刷新
             // 或者子View没有滑动到底部不拦截事件-上拉加载更多
             return false
@@ -657,7 +702,8 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
         when (action) {
             MotionEvent.ACTION_DOWN -> {
                 setTargetOffsetTopAndBottom(
-                        mOriginalOffsetTop - mHeadViewContainer!!.top, true)// 恢复HeaderView的初始位置
+                    mOriginalOffsetTop - mHeadViewContainer!!.top, true
+                )// 恢复HeaderView的初始位置
                 mActivePointerId = MotionEventCompat.getPointerId(ev, 0)
                 mIsBeingDragged = false
                 val initialMotionY = getMotionEventY(ev, mActivePointerId)
@@ -666,8 +712,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
                 }
                 mInitialMotionY = initialMotionY// 记录按下的位置
                 if (mActivePointerId == INVALID_POINTER) {
-                    Log.e(LOG_TAG,
-                            "Got ACTION_MOVE event but don't have an active pointer id.")
+                    Log.e(
+                        LOG_TAG,
+                        "Got ACTION_MOVE event but don't have an active pointer id."
+                    )
                     return false
                 }
 
@@ -724,8 +772,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
     }
 
     private fun getMotionEventY(ev: MotionEvent, activePointerId: Int): Float {
-        val index = MotionEventCompat.findPointerIndex(ev,
-                activePointerId)
+        val index = MotionEventCompat.findPointerIndex(
+            ev,
+            activePointerId
+        )
         return if (index < 0) {
             -1f
         } else MotionEventCompat.getY(ev, index)
@@ -742,7 +792,8 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
             mReturningToStart = false
         }
         if (!isEnabled || mReturningToStart
-                || !isChildScrollToTop && !isChildScrollToBottom) {
+            || !isChildScrollToTop && !isChildScrollToBottom
+        ) {
             // 如果子View可以滑动，不拦截事件，交给子View处理
             return false
         }
@@ -762,11 +813,15 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
             }
 
             MotionEvent.ACTION_MOVE -> {
-                val pointerIndex = MotionEventCompat.findPointerIndex(ev,
-                        mActivePointerId)
+                val pointerIndex = MotionEventCompat.findPointerIndex(
+                    ev,
+                    mActivePointerId
+                )
                 if (pointerIndex < 0) {
-                    Log.e(LOG_TAG,
-                            "Got ACTION_MOVE event but have an invalid active pointer id.")
+                    Log.e(
+                        LOG_TAG,
+                        "Got ACTION_MOVE event but have an invalid active pointer id."
+                    )
                     return false
                 }
 
@@ -783,13 +838,16 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
                         mSpinnerFinalOffset - mOriginalOffsetTop
                     else
                         mSpinnerFinalOffset
-                    val tensionSlingshotPercent = Math.max(0f,
-                            Math.min(extraOS, slingshotDist * 2) / slingshotDist)
+                    val tensionSlingshotPercent = Math.max(
+                        0f,
+                        Math.min(extraOS, slingshotDist * 2) / slingshotDist
+                    )
                     val tensionPercent = (tensionSlingshotPercent / 4 - Math
-                            .pow((tensionSlingshotPercent / 4).toDouble(), 2.0)).toFloat() * 2f
+                        .pow((tensionSlingshotPercent / 4).toDouble(), 2.0)).toFloat() * 2f
                     val extraMove = slingshotDist * tensionPercent * 2f
 
-                    val targetY = mOriginalOffsetTop + (slingshotDist * dragPercent + extraMove).toInt()
+                    val targetY =
+                        mOriginalOffsetTop + (slingshotDist * dragPercent + extraMove).toInt()
                     if (mHeadViewContainer!!.visibility != View.VISIBLE) {
                         mHeadViewContainer!!.visibility = View.VISIBLE
                     }
@@ -818,8 +876,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
                             mListener!!.onPullEnable(true)
                         }
                     }
-                    setTargetOffsetTopAndBottom(targetY - mCurrentTargetOffsetTop,
-                            true)
+                    setTargetOffsetTopAndBottom(
+                        targetY - mCurrentTargetOffsetTop,
+                        true
+                    )
                 }
             }
             MotionEventCompat.ACTION_POINTER_DOWN -> {
@@ -832,13 +892,17 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                 if (mActivePointerId == INVALID_POINTER) {
                     if (action == MotionEvent.ACTION_UP) {
-                        Log.e(LOG_TAG,
-                                "Got ACTION_UP event but don't have an active pointer id.")
+                        Log.e(
+                            LOG_TAG,
+                            "Got ACTION_UP event but don't have an active pointer id."
+                        )
                     }
                     return false
                 }
-                val pointerIndex = MotionEventCompat.findPointerIndex(ev,
-                        mActivePointerId)
+                val pointerIndex = MotionEventCompat.findPointerIndex(
+                    ev,
+                    mActivePointerId
+                )
                 val y = MotionEventCompat.getY(ev, pointerIndex)
                 val overscrollTop = (y - mInitialMotionY) * DRAG_RATE
                 mIsBeingDragged = false
@@ -887,11 +951,15 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
                 Log.d(LOG_TAG, "debug:onTouchEvent ACTION_DOWN")
             }
             MotionEvent.ACTION_MOVE -> {
-                val pointerIndex = MotionEventCompat.findPointerIndex(ev,
-                        mActivePointerId)
+                val pointerIndex = MotionEventCompat.findPointerIndex(
+                    ev,
+                    mActivePointerId
+                )
                 if (pointerIndex < 0) {
-                    Log.e(LOG_TAG,
-                            "Got ACTION_MOVE event but have an invalid active pointer id.")
+                    Log.e(
+                        LOG_TAG,
+                        "Got ACTION_MOVE event but have an invalid active pointer id."
+                    )
                     return false
                 }
                 val y = MotionEventCompat.getY(ev, pointerIndex)
@@ -901,7 +969,7 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
                     updateFooterViewPosition()
                     if (mOnPushLoadMoreListener != null) {
                         mOnPushLoadMoreListener!!
-                                .onPushEnable(pushDistance >= mFooterViewHeight)
+                            .onPushEnable(pushDistance >= mFooterViewHeight)
                     }
                 }
             }
@@ -915,13 +983,17 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                 if (mActivePointerId == INVALID_POINTER) {
                     if (action == MotionEvent.ACTION_UP) {
-                        Log.e(LOG_TAG,
-                                "Got ACTION_UP event but don't have an active pointer id.")
+                        Log.e(
+                            LOG_TAG,
+                            "Got ACTION_UP event but don't have an active pointer id."
+                        )
                     }
                     return false
                 }
-                val pointerIndex = MotionEventCompat.findPointerIndex(ev,
-                        mActivePointerId)
+                val pointerIndex = MotionEventCompat.findPointerIndex(
+                    ev,
+                    mActivePointerId
+                )
                 val y = MotionEventCompat.getY(ev, pointerIndex)
                 val overscrollBottom = (mInitialMotionY - y) * DRAG_RATE// 松手是下拉的距离
                 mIsBeingDragged = false
@@ -994,8 +1066,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
         }
     }
 
-    private fun animateOffsetToCorrectPosition(from: Int,
-                                               listener: AnimationListener?) {
+    private fun animateOffsetToCorrectPosition(
+        from: Int,
+        listener: AnimationListener?
+    ) {
         mFrom = from
         mAnimateToCorrectPosition.reset()
         mAnimateToCorrectPosition.duration = ANIMATE_TO_TRIGGER_DURATION.toLong()
@@ -1007,8 +1081,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
         mHeadViewContainer!!.startAnimation(mAnimateToCorrectPosition)
     }
 
-    private fun animateOffsetToStartPosition(from: Int,
-                                             listener: AnimationListener?) {
+    private fun animateOffsetToStartPosition(
+        from: Int,
+        listener: AnimationListener?
+    ) {
         if (mScale) {
             startScaleDownReturnToStartAnimation(from, listener)
         } else {
@@ -1051,12 +1127,16 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
 
         val headViewWidth = mHeadViewContainer!!.measuredWidth
         val headViewHeight = mHeadViewContainer!!.measuredHeight
-        mHeadViewContainer!!.layout(width / 2 - headViewWidth / 2,
-                -headViewHeight, width / 2 + headViewWidth / 2, 0)// 更新头布局的位置
+        mHeadViewContainer!!.layout(
+            width / 2 - headViewWidth / 2,
+            -headViewHeight, width / 2 + headViewWidth / 2, 0
+        )// 更新头布局的位置
         val footViewWidth = mFooterViewContainer!!.measuredWidth
         val footViewHeight = mFooterViewContainer!!.measuredHeight
-        mFooterViewContainer!!.layout(width / 2 - footViewWidth / 2, height,
-                width / 2 + footViewWidth / 2, height + footViewHeight)
+        mFooterViewContainer!!.layout(
+            width / 2 - footViewWidth / 2, height,
+            width / 2 + footViewWidth / 2, height + footViewHeight
+        )
     }
 
     private fun moveToStart(interpolatedTime: Float) {
@@ -1066,13 +1146,17 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
         setTargetOffsetTopAndBottom(offset, false /* requires update */)
     }
 
-    private fun startScaleDownReturnToStartAnimation(from: Int,
-                                                     listener: AnimationListener?) {
+    private fun startScaleDownReturnToStartAnimation(
+        from: Int,
+        listener: AnimationListener?
+    ) {
         mFrom = from
         mStartingScale = ViewCompat.getScaleX(mHeadViewContainer!!)
         mScaleDownToStartAnimation = object : Animation() {
-            public override fun applyTransformation(interpolatedTime: Float,
-                                                    t: Transformation) {
+            public override fun applyTransformation(
+                interpolatedTime: Float,
+                t: Transformation
+            ) {
                 val targetScale = mStartingScale + -mStartingScale * interpolatedTime
                 setAnimationProgress(targetScale)
                 moveToStart(interpolatedTime)
@@ -1121,8 +1205,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
         val pointerId = MotionEventCompat.getPointerId(ev, pointerIndex)
         if (pointerId == mActivePointerId) {
             val newPointerIndex = if (pointerIndex == 0) 1 else 0
-            mActivePointerId = MotionEventCompat.getPointerId(ev,
-                    newPointerIndex)
+            mActivePointerId = MotionEventCompat.getPointerId(
+                ev,
+                newPointerIndex
+            )
         }
     }
 
@@ -1139,16 +1225,12 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
 
         public override fun onAnimationStart() {
             super.onAnimationStart()
-            if (mListener != null) {
-                mListener!!.onAnimationStart(animation)
-            }
+            mListener?.onAnimationStart(animation)
         }
 
         public override fun onAnimationEnd() {
             super.onAnimationEnd()
-            if (mListener != null) {
-                mListener!!.onAnimationEnd(animation)
-            }
+            mListener?.onAnimationEnd(animation)
         }
     }
 
@@ -1262,8 +1344,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
 
         constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {}
 
-        constructor(context: Context, attrs: AttributeSet,
-                    defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        constructor(
+            context: Context, attrs: AttributeSet,
+            defStyleAttr: Int
+        ) : super(context, attrs, defStyleAttr) {
         }
 
         override fun onDraw(canvas: Canvas) {
@@ -1275,8 +1359,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
             } else {
                 swipeAngle = 360 - startAngle % 720 / 2
             }
-            canvas.drawArc(getOvalRect(), startAngle.toFloat(), swipeAngle.toFloat(), false,
-                    createPaint())
+            canvas.drawArc(
+                getOvalRect(), startAngle.toFloat(), swipeAngle.toFloat(), false,
+                createPaint()
+            )
         }
 
         private fun getBgRect(): RectF {
@@ -1284,7 +1370,12 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
             height1 = getHeight()
             if (bgRect == null) {
                 val offset = (density * 2).toInt()
-                bgRect = RectF(offset.toFloat(), offset.toFloat(), (width - offset).toFloat(), (height - offset).toFloat())
+                bgRect = RectF(
+                    offset.toFloat(),
+                    offset.toFloat(),
+                    (width - offset).toFloat(),
+                    (height - offset).toFloat()
+                )
             }
             return bgRect as RectF
         }
@@ -1294,7 +1385,12 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : Vie
             height1 = getHeight()
             if (ovalRect == null) {
                 val offset = (density * 8).toInt()
-                ovalRect = RectF(offset.toFloat(), offset.toFloat(), (width - offset).toFloat(), (height - offset).toFloat())
+                ovalRect = RectF(
+                    offset.toFloat(),
+                    offset.toFloat(),
+                    (width - offset).toFloat(),
+                    (height - offset).toFloat()
+                )
             }
             return ovalRect as RectF
         }
