@@ -2,20 +2,19 @@ package com.fly.tour.me
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fly.tour.common.base.BaseRefreshActivity
 import com.fly.tour.common.event.RequestCode
-import com.fly.tour.common.util.ToastUtil
 import com.fly.tour.common.view.CommonDialogFragment
 import com.fly.tour.db.entity.NewsType
 import com.fly.tour.me.adapter.NewsTypeListAdapter
 import com.fly.tour.me.adapter.NewsTypeListAdapter.DeleteClickListener
 import com.fly.tour.me.contract.NewsTypeListContract
 import com.fly.tour.me.model.NewsTypeListModel
+import com.fly.tour.me.presenter.NewsTypeListPresenter
 import kotlinx.android.synthetic.main.activity_news_type_list.*
 
 class NewsTypeListActivity :
@@ -42,7 +41,10 @@ class NewsTypeListActivity :
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         var i = item.itemId
         if (i == R.id.menu_add) {
-            //startActivityForResult()
+            startActivityForResult(
+                Intent(this, NewsTypeAddActivity::class.java),
+                RequestCode.Me.NEWS_TYPE_ADD
+            )
         }
         return super.onOptionsItemSelected(item)
     }
@@ -81,7 +83,6 @@ class NewsTypeListActivity :
     }
 
 
-
     override fun onRefreshEvent() {
         mPresenter?.refreshData()
     }
@@ -99,9 +100,10 @@ class NewsTypeListActivity :
             RequestCode.Me.NEWS_TYPE_ADD -> mPresenter?.refreshData()
         }
     }
-    companion object{
-        fun startNewsTypeListActivity(context:Context){
-            context.startActivity(Intent(context,NewsTypeListActivity::class.java))
+
+    companion object {
+        fun startNewsTypeListActivity(context: Context) {
+            context.startActivity(Intent(context, NewsTypeListActivity::class.java))
         }
     }
 }

@@ -51,6 +51,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':lib_common')
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt deps.arouter_compiler
     annotationProcessor deps.glide_compiler
     annotationProcessor deps.dagger_compiler
