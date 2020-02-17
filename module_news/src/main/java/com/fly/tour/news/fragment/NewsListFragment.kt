@@ -2,17 +2,10 @@ package com.fly.tour.news.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
-import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.fly.tour.common.base.BaseAdapter
 import com.fly.tour.common.base.BaseAdapter.OnItemClickListener
-import com.fly.tour.common.base.BaseFragment
 import com.fly.tour.common.base.BaseRefreshFragment
 import com.fly.tour.common.event.KeyCode
-import com.fly.tour.common.util.ToastUtil
 import com.fly.tour.db.entity.NewsDetail
 import com.fly.tour.db.entity.NewsType
 import com.fly.tour.news.NewsDetailActivity
