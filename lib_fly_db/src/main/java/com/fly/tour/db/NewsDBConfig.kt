@@ -1,11 +1,11 @@
 package com.fly.tour.db
 
 /**
- * Description: <NewsDBConfig><br></br>
- * Author:      mxdl<br></br>
- * Date:        2019/5/24<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <NewsDBConfig><br>
+ * Author:      mxdl<br>
+ * Date:        2019/5/24<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </NewsDBConfig> */
 interface NewsDBConfig {
 

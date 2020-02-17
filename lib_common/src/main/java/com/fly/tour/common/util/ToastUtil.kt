@@ -5,11 +5,11 @@ import android.widget.Toast
 import com.fly.tour.common.BaseApplication
 
 /**
- * Description: <吐司工具类><br></br>
- * Author: mxdl<br></br>
- * Date: 2018/6/11<br></br>
- * Version: V1.0.0<br></br>
- * Update: <br></br>
+ * Description: <吐司工具类><br>
+ * Author: mxdl<br>
+ * Date: 2018/6/11<br>
+ * Version: V1.0.0<br>
+ * Update: <br>
 </吐司工具类> */
 object ToastUtil {
 

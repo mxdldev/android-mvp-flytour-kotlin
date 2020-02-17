@@ -5,11 +5,11 @@ import android.content.Context
 import com.fly.tour.common.BaseApplication
 
 /**
- * Description: <单位转换工具类><br></br>
- * Author: mxdl<br></br>
- * Date: 2018/6/11<br></br>
- * Version: V1.0.0<br></br>
- * Update: <br></br>
+ * Description: <单位转换工具类><br>
+ * Author: mxdl<br>
+ * Date: 2018/6/11<br>
+ * Version: V1.0.0<br>
+ * Update: <br>
  *
  * <h1>功能列表：</h1>
  *  * 1. dp转px

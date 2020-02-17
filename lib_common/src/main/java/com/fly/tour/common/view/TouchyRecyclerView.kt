@@ -6,11 +6,11 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 
 /**
- * Description: <RecyclerView空白区域点击监听><br></br>
- * Author:      mxdl<br></br>
- * Date:        2018/8/24<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <RecyclerView空白区域点击监听><br>
+ * Author:      mxdl<br>
+ * Date:        2018/8/24<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </RecyclerView空白区域点击监听> */
 class TouchyRecyclerView(context: Context, attrs: AttributeSet) : androidx.recyclerview.widget.RecyclerView(context, attrs) {
     private var listener: OnNoChildClickListener? = null

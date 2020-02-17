@@ -8,11 +8,11 @@ import android.util.AttributeSet
 import android.widget.TextView
 
 /**
- * Description: <文字图标居中TextView><br></br>
- * Author:      mxdl<br></br>
- * Date:        2018/8/24<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <文字图标居中TextView><br>
+ * Author:      mxdl<br>
+ * Date:        2018/8/24<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </文字图标居中TextView> */
 @SuppressLint("AppCompatCustomView")
 class DrawableCenterTextView : TextView {

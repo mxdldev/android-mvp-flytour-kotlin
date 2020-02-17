@@ -40,17 +40,17 @@ import android.widget.ScrollView
 /**
  * @Author Zheng Haibo
  * @PersonalWebsite http://www.mobctrl.net
- * @Description 自定义CustomeSwipeRefreshLayout<br></br>
- * 支持下拉刷新和上拉加载更多<br></br>
- * 非侵入式，对原来的ListView、RecyclerView没有任何影响,用法和SwipeRefreshLayout类似。<br></br>
- * 可自定义头部View的样式，调用setHeaderView方法即可 <br></br>
- * 可自定义页尾View的样式，调用setFooterView方法即可 <br></br>
- * 支持RecyclerView，ListView，ScrollView，GridView等等。<br></br>
- * 被包含的View(RecyclerView,ListView etc.)可跟随手指的滑动而滑动<br></br>
- * 默认是跟随手指的滑动而滑动，也可以设置为不跟随：setTargetScrollWithLayout(false) 回调方法更多<br></br>
+ * @Description 自定义CustomeSwipeRefreshLayout<br>
+ * 支持下拉刷新和上拉加载更多<br>
+ * 非侵入式，对原来的ListView、RecyclerView没有任何影响,用法和SwipeRefreshLayout类似。<br>
+ * 可自定义头部View的样式，调用setHeaderView方法即可 <br>
+ * 可自定义页尾View的样式，调用setFooterView方法即可 <br>
+ * 支持RecyclerView，ListView，ScrollView，GridView等等。<br>
+ * 被包含的View(RecyclerView,ListView etc.)可跟随手指的滑动而滑动<br>
+ * 默认是跟随手指的滑动而滑动，也可以设置为不跟随：setTargetScrollWithLayout(false) 回调方法更多<br>
  * 比如：onRefresh() onPullDistance(int distance)和onPullEnable(boolean
- * enable)<br></br>
- * 开发人员可以根据下拉过程中distance的值做一系列动画。 <br></br>
+ * enable)<br>
+ * 开发人员可以根据下拉过程中distance的值做一系列动画。 <br>
  */
 @SuppressLint("ClickableViewAccessibility")
 open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
@@ -550,7 +550,7 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
     }
 
     /**
-     * 确保mTarget不为空<br></br>
+     * 确保mTarget不为空<br>
      * mTarget一般是可滑动的ScrollView,ListView,RecyclerView等
      */
     private fun ensureTarget() {
@@ -678,9 +678,9 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
     }
 
     /**
-     * 主要判断是否应该拦截子View的事件<br></br>
-     * 如果拦截，则交给自己的OnTouchEvent处理<br></br>
-     * 否者，交给子View处理<br></br>
+     * 主要判断是否应该拦截子View的事件<br>
+     * 如果拦截，则交给自己的OnTouchEvent处理<br>
+     * 否者，交给子View处理<br>
      */
     override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
         ensureTarget()

@@ -11,11 +11,11 @@ import android.widget.RelativeLayout
 import com.fly.tour.common.R
 
 /**
- * Description: <NoDataView><br></br>
- * Author:      mxdl<br></br>
- * Date:        2019/3/25<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <NoDataView><br>
+ * Author:      mxdl<br>
+ * Date:        2019/3/25<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </NoDataView> */
 class NoDataView(context: Context, attrs: AttributeSet) : RelativeLayout(context, attrs) {
 

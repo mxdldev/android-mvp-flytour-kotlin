@@ -4,11 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 
 /**
- * Description: <小菊花样式的刷新控件><br></br>
- * Author:      mxdl<br></br>
- * Date:        2019/2/25<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <小菊花样式的刷新控件><br>
+ * Author:      mxdl<br>
+ * Date:        2019/2/25<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </小菊花样式的刷新控件> */
 class DaisyRefreshLayout(context: Context, attrs: AttributeSet) :
     BaseRefreshLayout(context, attrs) {

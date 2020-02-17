@@ -12,11 +12,11 @@ import com.fly.tour.db.entity.NewsType
 import com.fly.tour.me.R
 
 /**
- * Description: <NewsTypeShowAdapter><br></br>
- * Author:      mxdl<br></br>
- * Date:        2019/5/27<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <NewsTypeShowAdapter><br>
+ * Author:      mxdl<br>
+ * Date:        2019/5/27<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </NewsTypeShowAdapter> */
 class NewsTypeSelectAdapter(context: Context) : BaseAdapter<NewsType, NewsTypeSelectAdapter.MyViewHolder>(context) {
 

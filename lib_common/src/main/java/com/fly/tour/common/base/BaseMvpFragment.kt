@@ -6,11 +6,11 @@ import com.fly.tour.common.mvp.BaseModel
 import com.fly.tour.common.mvp.BasePresenter
 
 /**
- * Description: <BaseMvpFragment><br></br>
- * Author:      mxdl<br></br>
- * Date:        2018/1/15<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <BaseMvpFragment><br>
+ * Author:      mxdl<br>
+ * Date:        2018/1/15<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </BaseMvpFragment> */
 abstract class BaseMvpFragment<M : BaseModel, V, P : BasePresenter<M, V>> : BaseFragment() {
     protected var mPresenter: P? = null

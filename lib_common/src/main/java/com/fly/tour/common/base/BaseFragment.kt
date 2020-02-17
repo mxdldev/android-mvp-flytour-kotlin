@@ -24,11 +24,11 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 /**
- * Description: <BaseFragment><br></br>
- * Author:      mxdl<br></br>
- * Date:        2018/1/15<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <BaseFragment><br>
+ * Author:      mxdl<br>
+ * Date:        2018/1/15<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </BaseFragment> */
 abstract class BaseFragment : Fragment(), BaseView {
     protected lateinit var mActivity: RxAppCompatActivity

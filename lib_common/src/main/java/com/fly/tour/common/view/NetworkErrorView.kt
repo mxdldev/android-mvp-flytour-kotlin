@@ -9,11 +9,11 @@ import com.fly.tour.common.R
 
 
 /**
- * Description: <NetworkErrorView><br></br>
- * Author:      mxdl<br></br>
- * Date:        2018/6/20<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <NetworkErrorView><br>
+ * Author:      mxdl<br>
+ * Date:        2018/6/20<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </NetworkErrorView> */
 class NetworkErrorView : RelativeLayout {
 

@@ -1,11 +1,11 @@
 package com.fly.tour.common.util
 
 /**
- * Description: <动态获取资源id><br></br>
- * Author: mxdl<br></br>
- * Date: 2018/6/19<br></br>
- * Version: V1.0.0<br></br>
- * Update: <br></br>
+ * Description: <动态获取资源id><br>
+ * Author: mxdl<br>
+ * Date: 2018/6/19<br>
+ * Version: V1.0.0<br>
+ * Update: <br>
 </动态获取资源id> */
 import android.content.Context
 

@@ -1,11 +1,11 @@
 package com.fly.tour.common.event
 
 /**
- * Description: <BaseEvent><br></br>
- * Author:      mxdl<br></br>
- * Date:        2018/4/4<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <BaseEvent><br>
+ * Author:      mxdl<br>
+ * Date:        2018/4/4<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </BaseEvent> */
 open class BaseEvent<T> {
     var code: Int = 0

@@ -9,11 +9,11 @@ import java.util.Calendar
 import java.util.Date
 
 /**
- * Description: <DateUtil><br></br>
- * Author: mxdl<br></br>
- * Date: 2018/6/11<br></br>
- * Version: V1.0.0<br></br>
- * Update: <br></br>
+ * Description: <DateUtil><br>
+ * Author: mxdl<br>
+ * Date: 2018/6/11<br>
+ * Version: V1.0.0<br>
+ * Update: <br>
 </DateUtil> */
 object DateUtil {
     /**

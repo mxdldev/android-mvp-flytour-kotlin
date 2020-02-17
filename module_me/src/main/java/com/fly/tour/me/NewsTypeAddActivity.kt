@@ -14,7 +14,13 @@ import com.fly.tour.me.model.NewsTypeAddModel
 import com.fly.tour.me.presenter.NewsTypeAddPresenter
 import kotlinx.android.synthetic.main.activity_news_type_add.*
 import org.greenrobot.eventbus.EventBus
-
+/**
+ * Description: <NewsTypeAddActivity><br>
+ * Author:      mxdl<br>
+ * Date:        2020/2/17<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
+ */
 class NewsTypeAddActivity :
     BaseMvpActivity<NewsTypeAddModel, NewsTypeAddContract.View, NewsTypeAddPresenter>(),
     NewsTypeAddContract.View {

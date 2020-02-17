@@ -5,11 +5,11 @@ import android.content.Context
 import com.trello.rxlifecycle2.LifecycleProvider
 
 /**
- * Description: <BaseModel><br></br>
- * Author:      mxdl<br></br>
- * Date:        2018/3/18<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <BaseModel><br>
+ * Author:      mxdl<br>
+ * Date:        2018/3/18<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </BaseModel> */
 open class BaseModel(val context: Context) {
     var lifecycle: LifecycleProvider<*>? = null

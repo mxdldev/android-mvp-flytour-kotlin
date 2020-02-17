@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import java.util.ArrayList
 
 /**
- * Description: <BaseAdapter><br></br>
- * Author:      mxdl<br></br>
- * Date:        2018/1/15<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <BaseAdapter><br>
+ * Author:      mxdl<br>
+ * Date:        2018/1/15<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </BaseAdapter> */
 abstract class BaseAdapter<E, VH : androidx.recyclerview.widget.RecyclerView.ViewHolder>(protected var mContext: Context) : androidx.recyclerview.widget.RecyclerView.Adapter<VH>() {
     protected var mList: MutableList<E>

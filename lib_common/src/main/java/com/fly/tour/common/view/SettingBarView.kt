@@ -14,11 +14,11 @@ import android.widget.TextView
 import com.fly.tour.common.R
 
 /**
- * Description: <SettingBarView><br></br>
- * Author:      mxdl<br></br>
- * Date:        2019/3/4<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <SettingBarView><br>
+ * Author:      mxdl<br>
+ * Date:        2019/3/4<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </SettingBarView> */
 class SettingBarView(context: Context, attrs: AttributeSet) : RelativeLayout(context, attrs) {
     private val imgLeftIcon: ImageView?

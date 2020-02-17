@@ -1,11 +1,11 @@
 package com.fly.tour.db.entity
 
 /**
- * Description: <NewsDetail><br></br>
- * Author:      mxdl<br></br>
- * Date:        2019/5/27<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <NewsDetail><br>
+ * Author:      mxdl<br>
+ * Date:        2019/5/27<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </NewsDetail> */
 class NewsDetail {
     var id: Int = 0

@@ -7,11 +7,11 @@ import com.fly.tour.common.manager.ActivityManager.Companion.activityStack
 import java.util.Stack
 
 /**
- * Description: <ActivityManager><br></br>
- * Author:      mxdl<br></br>
- * Date:        2018/3/18<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <ActivityManager><br>
+ * Author:      mxdl<br>
+ * Date:        2018/3/18<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </ActivityManager> */
 class ActivityManager private constructor() {
 

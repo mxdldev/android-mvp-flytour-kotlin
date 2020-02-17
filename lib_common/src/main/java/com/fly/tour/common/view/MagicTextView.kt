@@ -34,11 +34,11 @@ import java.util.WeakHashMap
 /**
  *
  * https://github.com/m5/MagicTextView
- * Description: <描边效果的TextView><br></br>
- * Author: mxdl<br></br>
- * Date: 2018/8/24<br></br>
- * Version: V1.0.0<br></br>
- * Update: <br></br>
+ * Description: <描边效果的TextView><br>
+ * Author: mxdl<br>
+ * Date: 2018/8/24<br>
+ * Version: V1.0.0<br>
+ * Update: <br>
 </描边效果的TextView> */
 @SuppressLint("AppCompatCustomView")
 class MagicTextView : TextView {

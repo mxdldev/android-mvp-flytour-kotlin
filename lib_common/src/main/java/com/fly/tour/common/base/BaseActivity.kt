@@ -24,11 +24,11 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 /**
- * Description: <BaseActivity><br></br>
- * Author:      mxdl<br></br>
- * Date:        2018/1/16<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <BaseActivity><br>
+ * Author:      mxdl<br>
+ * Date:        2018/1/16<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </BaseActivity> */
 abstract class BaseActivity : RxAppCompatActivity(), BaseView {
     protected var mTxtTitle: TextView? = null

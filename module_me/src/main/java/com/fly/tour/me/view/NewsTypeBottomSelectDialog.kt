@@ -19,11 +19,11 @@ import com.fly.tour.me.adapter.NewsTypeSelectAdapter
 import com.fly.tour.me.model.NewsTypeListModel
 
 /**
- * Description: <PhotoSelectDialog><br></br>
- * Author: mxdl<br></br>
- * Date: 2019/1/3<br></br>
- * Version: V1.0.0<br></br>
- * Update: <br></br>
+ * Description: <PhotoSelectDialog><br>
+ * Author: mxdl<br>
+ * Date: 2019/1/3<br>
+ * Version: V1.0.0<br>
+ * Update: <br>
 </PhotoSelectDialog> */
 class NewsTypeBottomSelectDialog : BottomSheetDialogFragment() {
     private var mRecyclerView: androidx.recyclerview.widget.RecyclerView? = null

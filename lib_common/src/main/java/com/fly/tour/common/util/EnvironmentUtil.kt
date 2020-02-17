@@ -21,7 +21,7 @@ import java.io.InputStreamReader
 import java.util.Locale
 
 /**
- * Description: <单位转换工具类><br></br>
+ * Description: <单位转换工具类><br>
  *
  * <h1>基本功能：</h1>
  *  * 1.获取包名
@@ -46,10 +46,10 @@ import java.util.Locale
  *  * 3.获得APK包名
  *  * 4.判断是否已经安装
  *
- * Author: mxdl<br></br>
- * Date: 2018/6/11<br></br>
- * Version: V1.0.0<br></br>
- * Update: <br></br>
+ * Author: mxdl<br>
+ * Date: 2018/6/11<br>
+ * Version: V1.0.0<br>
+ * Update: <br>
 </单位转换工具类> */
 
 class EnvironmentUtil {

@@ -26,7 +26,7 @@ import java.net.URL
 import java.net.URLConnection
 
 /**
- * Description: <BitmapUtil><br></br>
+ * Description: <BitmapUtil><br>
  *
  * <h1>功能列表：</h1>
  *  * 1.将scrollView转化为bitmap
@@ -42,10 +42,10 @@ import java.net.URLConnection
  *  * 11.读取图片的旋转的角度
  *  * 12.将图片按照某个角度进行旋转
  *
- * Author: mxdl<br></br>
- * Date: 2018/6/11<br></br>
- * Version: V1.0.0<br></br>
- * Update: <br></br>
+ * Author: mxdl<br>
+ * Date: 2018/6/11<br>
+ * Version: V1.0.0<br>
+ * Update: <br>
 </BitmapUtil> */
 object BitmapUtil {
     /**

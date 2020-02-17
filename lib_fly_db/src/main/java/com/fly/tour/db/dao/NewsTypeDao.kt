@@ -12,11 +12,11 @@ import com.fly.tour.db.entity.NewsType
 import java.util.ArrayList
 
 /**
- * Description: <NewsTypeDao><br></br>
- * Author:      mxdl<br></br>
- * Date:        2019/5/24<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <NewsTypeDao><br>
+ * Author:      mxdl<br>
+ * Date:        2019/5/24<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </NewsTypeDao> */
 class NewsTypeDao(context: Context) {
     private val mDatabase: SQLiteDatabase

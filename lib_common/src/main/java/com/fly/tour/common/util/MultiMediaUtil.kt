@@ -33,10 +33,10 @@ import me.nereo.multi_image_selector.MultiImageSelector
  *  * 1. 拍照、拍视频、选择图片完成的回调都在onActivityResult中回调的
  *  * 2.选择图片获取：List<String> path = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT)</String>
  *
- * Author:      mxdl<br></br>
- * Date:        2018/12/25<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Author:      mxdl<br>
+ * Date:        2018/12/25<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
  */
 object MultiMediaUtil {
     val SELECT_IMAGE = 1001
@@ -44,7 +44,7 @@ object MultiMediaUtil {
     val TAKE_VIDEO = 1003
 
     /**
-     * 打开图片选择器，选择图片<br></br>
+     * 打开图片选择器，选择图片<br>
      * 来获取图片
      *
      * @param activity

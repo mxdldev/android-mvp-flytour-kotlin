@@ -16,11 +16,11 @@ import androidx.annotation.RequiresApi
 import com.refresh.lib.contract.PushContract
 
 /**
- * Description: <DaisyHeaderView><br></br>
- * Author: mxdl<br></br>
- * Date: 2019/2/25<br></br>
- * Version: V1.0.0<br></br>
- * Update: <br></br>
+ * Description: <DaisyHeaderView><br>
+ * Author: mxdl<br>
+ * Date: 2019/2/25<br>
+ * Version: V1.0.0<br>
+ * Update: <br>
 </DaisyHeaderView> */
 class DaisyFooterView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : RelativeLayout(context, attrs), PushContract {
 

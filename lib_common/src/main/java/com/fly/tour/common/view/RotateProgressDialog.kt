@@ -18,11 +18,11 @@ import com.fly.tour.common.util.DisplayUtil
 
 
 /**
- * Description: <旋转进度的dialog><br></br>
- * Author: mxdl<br></br>
- * Date: 2018/4/19<br></br>
- * Version: V1.0.0<br></br>
- * Update: <br></br>
+ * Description: <旋转进度的dialog><br>
+ * Author: mxdl<br>
+ * Date: 2018/4/19<br>
+ * Version: V1.0.0<br>
+ * Update: <br>
 </旋转进度的dialog> */
 class RotateProgressDialog : androidx.fragment.app.DialogFragment() {
 

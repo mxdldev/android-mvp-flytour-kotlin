@@ -18,11 +18,11 @@ import com.fly.tour.common.util.MultiMediaUtil
 import me.nereo.multi_image_selector.MultiImageSelectorActivity
 
 /**
- * Description: <PhotoSelectDialog><br></br>
- * Author: mxdl<br></br>
- * Date: 2019/1/3<br></br>
- * Version: V1.0.0<br></br>
- * Update: <br></br>
+ * Description: <PhotoSelectDialog><br>
+ * Author: mxdl<br>
+ * Date: 2019/1/3<br>
+ * Version: V1.0.0<br>
+ * Update: <br>
 </PhotoSelectDialog> */
 class PhotoSelectDialog : BottomSheetDialogFragment(), View.OnClickListener {
     private var mOnClickLisener: OnPhotoClickLisener? = null

@@ -16,7 +16,13 @@ import com.fly.tour.me.contract.NewsTypeListContract
 import com.fly.tour.me.model.NewsTypeListModel
 import com.fly.tour.me.presenter.NewsTypeListPresenter
 import kotlinx.android.synthetic.main.activity_news_type_list.*
-
+/**
+ * Description: <NewsTypeListActivity><br>
+ * Author:      mxdl<br>
+ * Date:        2020/2/17<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
+ */
 class NewsTypeListActivity :
     BaseRefreshActivity<NewsTypeListModel, NewsTypeListContract.View<NewsType>, NewsTypeListPresenter, NewsType>(),
     NewsTypeListContract.View<NewsType> {

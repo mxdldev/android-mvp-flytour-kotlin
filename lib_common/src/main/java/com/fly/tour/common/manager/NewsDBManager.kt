@@ -17,11 +17,11 @@ import java.io.InputStreamReader
 import java.lang.reflect.Type
 
 /**
- * Description: <NewsDBManager><br></br>
- * Author:      mxdl<br></br>
- * Date:        2019/5/28<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <NewsDBManager><br>
+ * Author:      mxdl<br>
+ * Date:        2019/5/28<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </NewsDBManager> */
 class NewsDBManager private constructor(private val mContext: Context) {
 

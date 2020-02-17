@@ -10,11 +10,11 @@ import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.functions.Consumer
 
 /**
- * Description: <PermissionCheckUtil><br></br>
- * Author:      mxdl<br></br>
- * Date:        2019/3/29<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <PermissionCheckUtil><br>
+ * Author:      mxdl<br>
+ * Date:        2019/3/29<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </PermissionCheckUtil> */
 object PermissionCheckUtil {
     fun check(activity: androidx.fragment.app.FragmentActivity) {

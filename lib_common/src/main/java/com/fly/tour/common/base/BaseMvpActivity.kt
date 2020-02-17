@@ -6,11 +6,11 @@ import com.fly.tour.common.mvp.BaseModel
 import com.fly.tour.common.mvp.BasePresenter
 
 /**
- * Description: <BaseMvpActivity><br></br>
- * Author:      mxdl<br></br>
- * Date:        2018/1/16<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <BaseMvpActivity><br>
+ * Author:      mxdl<br>
+ * Date:        2018/1/16<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </BaseMvpActivity> */
 abstract class BaseMvpActivity<M : BaseModel, V, P : BasePresenter<M, V>> : BaseActivity() {
     protected var mPresenter: P? = null

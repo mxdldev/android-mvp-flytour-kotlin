@@ -5,11 +5,11 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 
 /**
- * Description: <BaseRefreshLayout><br></br>
- * Author:      mxdl<br></br>
- * Date:        2019/2/25<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <BaseRefreshLayout><br>
+ * Author:      mxdl<br>
+ * Date:        2019/2/25<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </BaseRefreshLayout> */
 abstract class BaseRefreshLayout(context: Context, attrs: AttributeSet) : SuperSwipeRefreshLayout(context, attrs) {
     private var isEnableRefresh = true//是否启用下拉刷新

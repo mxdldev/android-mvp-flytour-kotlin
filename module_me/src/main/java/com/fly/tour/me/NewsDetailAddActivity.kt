@@ -13,7 +13,13 @@ import com.fly.tour.me.model.NewsDetailAddModel
 import com.fly.tour.me.presenter.NewsDetailAddPresenter
 import com.fly.tour.me.view.NewsTypeBottomSelectDialog
 import kotlinx.android.synthetic.main.activity_news_detail_add.*
-
+/**
+ * Description: <NewsDetailAddActivity><br>
+ * Author:      mxdl<br>
+ * Date:        2020/2/17<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
+ */
 class NewsDetailAddActivity :
     BaseMvpActivity<NewsDetailAddModel, NewsDetailAddContract.View, NewsDetailAddPresenter>(),
     NewsDetailAddContract.View {

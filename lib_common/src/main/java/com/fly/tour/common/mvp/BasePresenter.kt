@@ -6,11 +6,11 @@ import com.trello.rxlifecycle2.LifecycleProvider
 
 
 /**
- * Description: <BasePresenter><br></br>
- * Author:      mxdl<br></br>
- * Date:        2018/1/15<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <BasePresenter><br>
+ * Author:      mxdl<br>
+ * Date:        2018/1/15<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </BasePresenter> */
 abstract class BasePresenter<M : BaseModel, V>(protected var mContext: Context) {
     protected var mView: V? = null

@@ -11,11 +11,11 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 /**
- * Description: <FileUtil><br></br>
- * Author:      mxdl<br></br>
- * Date:        2018/7/13<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <FileUtil><br>
+ * Author:      mxdl<br>
+ * Date:        2018/7/13<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </FileUtil> */
 object FileUtil {
     fun isImageFile(url: String): Boolean {

@@ -6,11 +6,11 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 /**
- * Description: <NewsDBHelper><br></br>
- * Author:      mxdl<br></br>
- * Date:        2019/5/24<br></br>
- * Version:     V1.0.0<br></br>
- * Update:     <br></br>
+ * Description: <NewsDBHelper><br>
+ * Author:      mxdl<br>
+ * Date:        2019/5/24<br>
+ * Version:     V1.0.0<br>
+ * Update:     <br>
 </NewsDBHelper> */
 class NewsDBHelper private constructor(context: Context) : SQLiteOpenHelper(context, NewsDBConfig.DB_NAME, null, NewsDBConfig.VERSION_CODE) {
 

@@ -6,11 +6,11 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 /**
- * Description: <ToastUtil><br></br>
- * Author: mxdl<br></br>
- * Date: 2018/6/11<br></br>
- * Version: V1.0.0<br></br>
- * Update: <br></br>
+ * Description: <ToastUtil><br>
+ * Author: mxdl<br>
+ * Date: 2018/6/11<br>
+ * Version: V1.0.0<br>
+ * Update: <br>
 </ToastUtil> */
 object InfoVerify {
     /**
