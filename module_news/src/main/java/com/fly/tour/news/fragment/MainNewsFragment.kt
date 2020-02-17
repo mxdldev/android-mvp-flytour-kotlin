@@ -36,7 +36,6 @@ class MainNewsFragment : BaseFragment() {
     }
 
     override fun initView(view: View) {
-        //mViewPagers = mViewPager
         mViewPager = view.findViewById(R.id.mViewPager)
         mTabLayout = view.findViewById(R.id.mTabLayout)
     }
@@ -52,7 +51,7 @@ class MainNewsFragment : BaseFragment() {
 
         mTabLayout.addOnTabSelectedListener(object :TabLayout.OnTabSelectedListener{
             override fun onTabReselected(p0: TabLayout.Tab?) {
-                //mListFragment.get(p0.posi
+                mListFragment.get(p0!!.position).autoLoadData()
             }
 
             override fun onTabUnselected(p0: TabLayout.Tab?) {

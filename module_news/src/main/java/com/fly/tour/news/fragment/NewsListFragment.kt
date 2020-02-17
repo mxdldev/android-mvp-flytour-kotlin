@@ -15,6 +15,7 @@ import com.fly.tour.common.event.KeyCode
 import com.fly.tour.common.util.ToastUtil
 import com.fly.tour.db.entity.NewsDetail
 import com.fly.tour.db.entity.NewsType
+import com.fly.tour.news.NewsDetailActivity
 import com.fly.tour.news.R
 import com.fly.tour.news.adapter.NewsListAdapter
 import com.fly.tour.news.contract.NewsListContract
@@ -69,7 +70,7 @@ class NewsListFragment :
     override fun initListener() {
         mNewsListAdapter?.setItemClickListener(object : OnItemClickListener<NewsDetail> {
             override fun onItemClick(e: NewsDetail, position: Int) {
-                ToastUtil.showToast("ok")
+                NewsDetailActivity.startNewsDetailActivity(mActivity,e.id)
             }
         })
     }
