@@ -52,8 +52,8 @@ class NewsListFragment :
 
     override fun initView(view: View) {
         mRecViewNewsDetail = view.findViewById(R.id.recview_news_list)
-        mRecViewNewsDetail?.layoutManager = LinearLayoutManager(mActivity)
-        mNewsListAdapter = NewsListAdapter(mActivity)
+        mRecViewNewsDetail?.layoutManager = LinearLayoutManager(context)
+        mNewsListAdapter = NewsListAdapter(context!!)
         mRecViewNewsDetail?.adapter = mNewsListAdapter
     }
 
@@ -83,11 +83,11 @@ class NewsListFragment :
     }
 
     override fun refreshData(data: List<NewsDetail>) {
-        mPresenter?.refreshData()
+        mNewsListAdapter?.refresh(data)
     }
 
     override fun loadMoreData(data: List<NewsDetail>) {
-        mPresenter?.loadMoreData()
+        mNewsListAdapter?.addAll(data)
     }
 
     override fun onRefreshEvent() {

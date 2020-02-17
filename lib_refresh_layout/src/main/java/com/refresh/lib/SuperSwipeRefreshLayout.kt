@@ -137,13 +137,13 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
      * 下拉时，超过距离之后，弹回来的动画监听器
      */
     private val mRefreshListener = object : AnimationListener {
-        override fun onAnimationStart(animation: Animation) {
+        override fun onAnimationStart(animation: Animation?) {
             isProgressEnable = false
         }
 
-        override fun onAnimationRepeat(animation: Animation) {}
+        override fun onAnimationRepeat(animation: Animation?) {}
 
-        override fun onAnimationEnd(animation: Animation) {
+        override fun onAnimationEnd(animation: Animation?) {
             isProgressEnable = true
             if (mRefreshing) {
                 if (mNotify) {
