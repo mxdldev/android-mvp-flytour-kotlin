@@ -21,6 +21,7 @@ import com.fly.tour.news.adapter.NewsListAdapter
 import com.fly.tour.news.contract.NewsListContract
 import com.fly.tour.news.model.NewsListModel
 import com.fly.tour.news.presenter.NewsListPresenter
+import kotlinx.android.synthetic.main.fragment_news_list.*
 
 /**
  * Description: <NewsListFragment><br>
@@ -41,7 +42,6 @@ class NewsListFragment :
     NewsListContract.View<NewsDetail> {
     private var mNewsType: NewsType? = null
     private var mNewsListAdapter: NewsListAdapter? = null
-    private var mRecViewNewsDetail: RecyclerView? = null
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mNewsType = arguments?.getParcelable(KeyCode.News.NEWS_TYPE)
@@ -49,13 +49,6 @@ class NewsListFragment :
 
     override fun onBindLayout(): Int {
         return R.layout.fragment_news_list
-    }
-
-    override fun initView(view: View) {
-        mRecViewNewsDetail = view.findViewById(R.id.recview_news_list)
-        mRecViewNewsDetail?.layoutManager = LinearLayoutManager(context)
-        mNewsListAdapter = NewsListAdapter(context!!)
-        mRecViewNewsDetail?.adapter = mNewsListAdapter
     }
 
     override fun enableLazyData(): Boolean {
@@ -68,6 +61,9 @@ class NewsListFragment :
     }
 
     override fun initListener() {
+        mNewsListAdapter = NewsListAdapter(context!!)
+        mRecViewNewsDetail?.layoutManager = LinearLayoutManager(context)
+        mRecViewNewsDetail?.adapter = mNewsListAdapter
         mNewsListAdapter?.setItemClickListener(object : OnItemClickListener<NewsDetail> {
             override fun onItemClick(e: NewsDetail, position: Int) {
                 NewsDetailActivity.startNewsDetailActivity(mActivity,e.id)

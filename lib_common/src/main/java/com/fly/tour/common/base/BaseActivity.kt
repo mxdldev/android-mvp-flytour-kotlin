@@ -54,7 +54,6 @@ abstract class BaseActivity : RxAppCompatActivity(), BaseView {
         setContentView(R.layout.activity_root)
         initCommonView()
         ARouter.getInstance().inject(this)
-        initView()
         initListener()
         initData()
         EventBus.getDefault().register(this)
@@ -113,8 +112,6 @@ abstract class BaseActivity : RxAppCompatActivity(), BaseView {
     }
 
     abstract fun onBindLayout(): Int
-
-    abstract override fun initView()
 
     abstract override fun initData()
 

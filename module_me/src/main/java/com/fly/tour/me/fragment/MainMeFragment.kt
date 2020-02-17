@@ -2,7 +2,12 @@ package com.fly.tour.me.fragment
 
 import android.view.View
 import com.fly.tour.common.base.BaseFragment
+import com.fly.tour.common.util.ToastUtil
+import com.fly.tour.common.view.SettingBarView
+import com.fly.tour.common.view.SettingBarView.OnClickSettingBarViewListener
+import com.fly.tour.me.NewsTypeListActivity
 import com.fly.tour.me.R
+import kotlinx.android.synthetic.main.fragment_me_main.*
 
 /**
  * Description: <MainMeFragment><br>
@@ -19,10 +24,22 @@ class MainMeFragment : BaseFragment() {
         return R.layout.fragment_me_main
     }
 
-    override fun initView(view: View) {
-    }
+    override fun initListener() {
+        view_setting_news_type.setOnClickSettingBarViewListener(object :
+            OnClickSettingBarViewListener {
+            override fun onClick() {
+                NewsTypeListActivity.startNewsTypeListActivity(mActivity)
+            }
+        })
+        view_setting_news_detail.setOnClickSettingBarViewListener(object :OnClickSettingBarViewListener{
+            override fun onClick() {
+                ToastUtil.showToast("ok1")
+            }
 
+        })
+    }
     override fun initData() {
+
     }
 
     companion object {

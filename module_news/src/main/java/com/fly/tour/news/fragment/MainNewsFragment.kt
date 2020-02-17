@@ -26,18 +26,11 @@ class MainNewsFragment : BaseFragment() {
     private var mListFragment = ArrayList<NewsListFragment>()
     private var mIsfresh = false;
     private lateinit var mNewsFragmentAdapter:NewsFragmentAdapter
-    private lateinit var mViewPager:ViewPager
-    private lateinit var mTabLayout:TabLayout
     override val toolbarTitle: String
         get() = ""
 
     override fun onBindLayout(): Int {
         return R.layout.fragment_news_main
-    }
-
-    override fun initView(view: View) {
-        mViewPager = view.findViewById(R.id.mViewPager)
-        mTabLayout = view.findViewById(R.id.mTabLayout)
     }
 
     override fun initData() {

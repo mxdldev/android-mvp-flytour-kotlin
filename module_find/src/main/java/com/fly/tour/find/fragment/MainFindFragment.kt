@@ -19,9 +19,6 @@ class MainFindFragment: BaseFragment() {
         return R.layout.fragment_find_main
     }
 
-    override fun initView(view: View) {
-    }
-
     override fun initData() {
     }
     companion object{

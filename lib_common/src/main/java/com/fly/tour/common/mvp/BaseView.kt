@@ -8,7 +8,6 @@ package com.fly.tour.common.mvp
  * Update:     <br></br>
 </BaseView> */
 interface BaseView : ILoadView, INoDataView, ITransView, INetErrView {
-    fun initView()
     fun initListener()
     fun initData()
     fun finishActivity()

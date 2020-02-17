@@ -36,9 +36,6 @@ class NewsDetailActivity :
         return R.layout.activity_news_detail
     }
 
-    override fun initView() {
-    }
-
     override fun initData() {
         var newsid = intent.getIntExtra(KeyCode.News.NEWS_ID, -1)
         mPresenter?.getNewsDetailById(newsid)

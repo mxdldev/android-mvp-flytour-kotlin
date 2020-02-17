@@ -62,8 +62,6 @@ abstract class BaseFragment : Fragment(), BaseView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.fragment_root, container, false)
         initCommonView(mView)
-        initView(mView)
-        initListener()
         return mView
     }
 
@@ -87,6 +85,9 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //initView(mView)
+        initListener()
+
         isViewCreated = true
         //如果启用了懒加载就进行懒加载，否则就进行预加载
         if (enableLazyData()) {
@@ -146,10 +147,6 @@ abstract class BaseFragment : Fragment(), BaseView {
     }
 
     abstract fun onBindLayout(): Int
-
-    abstract fun initView(view: View)
-
-    override fun initView() {}
 
     abstract override fun initData()
 

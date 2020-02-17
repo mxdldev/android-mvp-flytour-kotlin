@@ -28,7 +28,7 @@ class MainActivity : BaseActivity() {
         return R.layout.activity_main_index
     }
 
-    override fun initView() {
+    override fun initListener() {
         navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_news -> {
@@ -46,6 +46,9 @@ class MainActivity : BaseActivity() {
             }
             return@setOnNavigationItemSelectedListener true
         }
+
+    }
+    override fun initData() {
         mNewsFragment = mNewsProvider?.mainNewsFragment
         mFindFragment = mFindProvider?.mainFindFragment
         mMeFragment = mMeProvider?.mainMeFragment
@@ -56,10 +59,6 @@ class MainActivity : BaseActivity() {
                 .replace(R.id.frame_content, mNewsFragment as Fragment, MainChannel.NEWS.name)
                 .commit()
         }
-
-    }
-
-    override fun initData() {
     }
 
     fun switchContent(from: Fragment?, to: Fragment?, tag: String) {
