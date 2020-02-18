@@ -6,7 +6,7 @@ package com.fly.tour.db.entity
  * Date:        2019/5/27<br>
  * Version:     V1.0.0<br>
  * Update:     <br>
-</NewsDetail> */
+ */
 class NewsDetail {
     var id: Int = 0
     var typeid: Int = 0

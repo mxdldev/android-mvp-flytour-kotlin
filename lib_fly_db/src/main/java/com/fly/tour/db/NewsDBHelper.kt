@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper
  * Date:        2019/5/24<br>
  * Version:     V1.0.0<br>
  * Update:     <br>
-</NewsDBHelper> */
+ */
 class NewsDBHelper private constructor(context: Context) : SQLiteOpenHelper(context, NewsDBConfig.DB_NAME, null, NewsDBConfig.VERSION_CODE) {
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

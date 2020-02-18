@@ -6,9 +6,8 @@ package com.fly.tour.db
  * Date:        2019/5/24<br>
  * Version:     V1.0.0<br>
  * Update:     <br>
-</NewsDBConfig> */
+ */
 interface NewsDBConfig {
-
 
     interface NewsType {
         companion object {

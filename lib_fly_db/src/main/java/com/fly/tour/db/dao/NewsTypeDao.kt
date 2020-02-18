@@ -17,7 +17,7 @@ import java.util.ArrayList
  * Date:        2019/5/24<br>
  * Version:     V1.0.0<br>
  * Update:     <br>
-</NewsTypeDao> */
+ */
 class NewsTypeDao(context: Context) {
     private val mDatabase: SQLiteDatabase
 

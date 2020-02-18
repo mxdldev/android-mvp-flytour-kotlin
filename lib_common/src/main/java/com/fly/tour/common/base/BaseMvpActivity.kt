@@ -11,7 +11,7 @@ import com.fly.tour.common.mvp.BasePresenter
  * Date:        2018/1/16<br>
  * Version:     V1.0.0<br>
  * Update:     <br>
-</BaseMvpActivity> */
+*/
 abstract class BaseMvpActivity<M : BaseModel, V, P : BasePresenter<M, V>> : BaseActivity() {
     protected var mPresenter: P? = null
     override fun onCreate(savedInstanceState: Bundle?) {
