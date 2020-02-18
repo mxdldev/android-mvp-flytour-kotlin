@@ -23,13 +23,6 @@ import kotlinx.android.synthetic.main.fragment_news_list.*
  * Version:     V1.0.0<br>
  * Update:     <br>
  */
-/**
- * Description: <NewsListFragment><br>
- * Author:      mxdl<br>
- * Date:        2020/2/16<br>
- * Version:     V1.0.0<br>
- * Update:     <br>
- */
 class NewsListFragment :
     BaseRefreshFragment<NewsListModel, NewsListContract.View<NewsDetail>, NewsListPresenter, NewsDetail>(),
     NewsListContract.View<NewsDetail> {
@@ -91,9 +84,6 @@ class NewsListFragment :
     override fun onAutoLoadEvent() {
         mPresenter?.refreshData()
     }
-
-    override val toolbarTitle: String
-        get() = ""
 
     companion object {
         fun newInstance(newsType: NewsType): NewsListFragment {

@@ -50,7 +50,7 @@ abstract class BaseFragment : Fragment(), BaseView {
     private var isViewCreated = false
     private var isViewVisable = false
 
-    abstract val toolbarTitle: String
+    open protected val toolbarTitle: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -160,7 +160,7 @@ abstract class BaseFragment : Fragment(), BaseView {
         return false
     }
 
-    fun onBindToolbarLayout(): Int {
+    open fun onBindToolbarLayout(): Int {
         return R.layout.common_toolbar
     }
 

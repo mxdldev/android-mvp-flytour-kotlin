@@ -15,10 +15,7 @@ import kotlinx.android.synthetic.main.fragment_me_main.*
  * Update:     <br>
  */
 class MainMeFragment : BaseFragment() {
-    override val toolbarTitle: String
-        get() = ""
-
-    override fun onBindLayout(): Int {
+     override fun onBindLayout(): Int {
         return R.layout.fragment_me_main
     }
 

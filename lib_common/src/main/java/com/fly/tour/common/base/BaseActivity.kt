@@ -22,7 +22,6 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-
 /**
  * Description: <BaseActivity><br>
  * Author:      mxdl<br>
@@ -31,22 +30,19 @@ import org.greenrobot.eventbus.ThreadMode
  * Update:     <br>
 </BaseActivity> */
 abstract class BaseActivity : RxAppCompatActivity(), BaseView {
-    protected var mTxtTitle: TextView? = null
-    protected var mToolbar: Toolbar? = null
+    protected lateinit var mTxtTitle: TextView
+    protected lateinit var mToolbar: Toolbar
     protected var mNetErrorView: NetErrorView? = null
     protected var mNoDataView: NoDataView? = null
     protected var mLoadingInitView: LoadingInitView? = null
     protected var mLoadingTransView: LoadingTransView? = null
     private val isrefresh = false
-    private var mViewStubToolbar: ViewStub? = null
-    private var mViewStubContent: ViewStub? = null
+    private lateinit var mViewStubToolbar: ViewStub
+    private lateinit var mViewStubContent: ViewStub
     private var mViewStubInitLoading: ViewStub? = null
     private var mViewStubTransLoading: ViewStub? = null
     private var mViewStubNoData: ViewStub? = null
     private var mViewStubError: ViewStub? = null
-
-    val tootBarTitle: String
-        get() = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +53,7 @@ abstract class BaseActivity : RxAppCompatActivity(), BaseView {
         initListener()
         initData()
         EventBus.getDefault().register(this)
-        ActivityManager.getInstance()!!.addActivity(this)
+        ActivityManager.getInstance()?.addActivity(this)
     }
 
 
@@ -71,12 +67,12 @@ abstract class BaseActivity : RxAppCompatActivity(), BaseView {
         mViewStubNoData = findViewById(R.id.view_stub_nodata)
 
         if (enableToolbar()) {
-            mViewStubToolbar!!.layoutResource = onBindToolbarLayout()
-            val view = mViewStubToolbar!!.inflate()
+            mViewStubToolbar.layoutResource = onBindToolbarLayout()
+            val view = mViewStubToolbar.inflate()
             initToolbar(view)
         }
-        mViewStubContent!!.layoutResource = onBindLayout()
-        mViewStubContent!!.inflate()
+        mViewStubContent.layoutResource = onBindLayout()
+        mViewStubContent.inflate()
     }
 
     protected fun initToolbar(view: View) {
@@ -85,30 +81,32 @@ abstract class BaseActivity : RxAppCompatActivity(), BaseView {
         if (mToolbar != null) {
             setSupportActionBar(mToolbar)
             supportActionBar!!.setDisplayShowTitleEnabled(false)
-            mToolbar!!.setNavigationOnClickListener { onBackPressed() }
+            mToolbar.setNavigationOnClickListener { onBackPressed() }
         }
     }
 
     override fun onTitleChanged(title: CharSequence, color: Int) {
         super.onTitleChanged(title, color)
         if (mTxtTitle != null && !TextUtils.isEmpty(title)) {
-            mTxtTitle!!.text = title
+            mTxtTitle.text = title
         }
         //可以再次覆盖设置title
-        val tootBarTitle = tootBarTitle
+        val tootBarTitle = getTootBarTitle()
         if (mTxtTitle != null && !TextUtils.isEmpty(tootBarTitle)) {
-            mTxtTitle!!.text = tootBarTitle
+            mTxtTitle.text = tootBarTitle
         }
     }
+    open fun getTootBarTitle(): String{
+        return ""
+    }
 
+    open fun onBindToolbarLayout(): Int {
+        return R.layout.common_toolbar
+    }
     override fun onDestroy() {
         super.onDestroy()
         EventBus.getDefault().unregister(this)
         ActivityManager.getInstance()!!.finishActivity(this)
-    }
-
-    fun onBindToolbarLayout(): Int {
-        return R.layout.common_toolbar
     }
 
     abstract fun onBindLayout(): Int

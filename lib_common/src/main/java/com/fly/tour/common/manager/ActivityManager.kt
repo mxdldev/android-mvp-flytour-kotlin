@@ -16,7 +16,7 @@ import java.util.Stack
 class ActivityManager private constructor() {
 
     val isActivityStackEmpty: Boolean
-        get() = activityStack!!.empty()
+        get() = activityStack.empty()
 
     /**
      * 添加Activity到堆栈
@@ -25,7 +25,7 @@ class ActivityManager private constructor() {
         if (activityStack == null) {
             activityStack = Stack()
         }
-        activityStack!!.add(activity)
+        activityStack.add(activity)
     }
 
     /**
@@ -33,7 +33,7 @@ class ActivityManager private constructor() {
      */
     fun currentActivity(): Activity? {
         try {
-            return activityStack!!.lastElement()
+            return activityStack.lastElement()
         } catch (e: Exception) {
             return null
         }
@@ -44,17 +44,17 @@ class ActivityManager private constructor() {
      * 获取当前Activity的前一个Activity
      */
     fun preActivity(): Activity? {
-        val index = activityStack!!.size - 2
+        val index = activityStack.size - 2
         return if (index < 0) {
             null
-        } else activityStack!![index]
+        } else activityStack[index]
     }
 
     /**
      * 结束当前Activity（堆栈中最后一个压入的）
      */
     fun finishActivity() {
-        val activity = activityStack!!.lastElement()
+        val activity = activityStack.lastElement()
         finishActivity(activity)
     }
 
@@ -64,7 +64,7 @@ class ActivityManager private constructor() {
     fun finishActivity(activity: Activity?) {
         var activity = activity
         if (activity != null) {
-            activityStack!!.remove(activity)
+            activityStack.remove(activity)
             activity.finish()
             activity = null
         }
@@ -76,7 +76,7 @@ class ActivityManager private constructor() {
     fun removeActivity(activity: Activity?) {
         var activity = activity
         if (activity != null) {
-            activityStack!!.remove(activity)
+            activityStack.remove(activity)
             activity = null
         }
     }
@@ -86,7 +86,7 @@ class ActivityManager private constructor() {
      */
     fun finishActivity(cls: Class<*>) {
         try {
-            for (activity in activityStack!!) {
+            for (activity in activityStack) {
                 if (activity.javaClass == cls) {
                     finishActivity(activity)
                 }
@@ -102,14 +102,14 @@ class ActivityManager private constructor() {
      */
     fun finishAllActivity() {
         var i = 0
-        val size = activityStack!!.size
+        val size = activityStack.size
         while (i < size) {
-            if (null != activityStack!![i]) {
-                activityStack!![i].finish()
+            if (null != activityStack[i]) {
+                activityStack[i].finish()
             }
             i++
         }
-        activityStack!!.clear()
+        activityStack.clear()
     }
 
     /**
@@ -118,11 +118,11 @@ class ActivityManager private constructor() {
      * @param cls
      */
     fun returnToActivity(cls: Class<*>) {
-        while (activityStack!!.size != 0)
-            if (activityStack!!.peek().javaClass == cls) {
+        while (activityStack.size != 0)
+            if (activityStack.peek().javaClass == cls) {
                 break
             } else {
-                finishActivity(activityStack!!.peek())
+                finishActivity(activityStack.peek())
             }
     }
 
@@ -135,9 +135,9 @@ class ActivityManager private constructor() {
     fun isOpenActivity(cls: Class<*>): Boolean {
         if (activityStack != null) {
             var i = 0
-            val size = activityStack!!.size
+            val size = activityStack.size
             while (i < size) {
-                if (cls == activityStack!!.peek().javaClass) {
+                if (cls == activityStack.peek().javaClass) {
                     return true
                 }
                 i++
@@ -168,11 +168,11 @@ class ActivityManager private constructor() {
     }
 
     companion object {
-        private var activityStack: Stack<Activity>? = null
+        private lateinit var activityStack: Stack<Activity>
         @Volatile
         private var instance: ActivityManager? = null
 
-        fun getInstance(): ActivityManager? {
+        fun getInstance(): ActivityManager?{
             if (instance == null) {
                 synchronized(ActivityManager::class.java) {
                     if (instance == null) {

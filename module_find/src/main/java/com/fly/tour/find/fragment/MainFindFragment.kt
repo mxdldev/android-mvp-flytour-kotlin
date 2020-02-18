@@ -12,9 +12,6 @@ import com.fly.tour.find.R
  * Update:     <br>
  */
 class MainFindFragment: BaseFragment() {
-    override val toolbarTitle: String
-        get() = ""
-
     override fun onBindLayout(): Int {
         return R.layout.fragment_find_main
     }

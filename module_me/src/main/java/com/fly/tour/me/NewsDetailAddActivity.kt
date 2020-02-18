@@ -24,6 +24,7 @@ class NewsDetailAddActivity :
     BaseMvpActivity<NewsDetailAddModel, NewsDetailAddContract.View, NewsDetailAddPresenter>(),
     NewsDetailAddContract.View {
     private var mNewsType: NewsType? = null
+
     override fun initPresenter(): NewsDetailAddPresenter {
         return NewsDetailAddPresenter(this)
     }
@@ -76,5 +77,14 @@ class NewsDetailAddActivity :
         fun startNewsDetailAddActivity(context: Context) {
             context.startActivity(Intent(context, NewsDetailAddActivity::class.java))
         }
+    }
+
+    override fun getTootBarTitle(): String {
+        return super.getTootBarTitle()
+    }
+
+
+    override fun onBindToolbarLayout(): Int {
+        return super.onBindToolbarLayout()
     }
 }

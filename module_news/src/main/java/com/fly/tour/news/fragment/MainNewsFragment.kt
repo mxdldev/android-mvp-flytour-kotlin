@@ -26,9 +26,6 @@ class MainNewsFragment : BaseFragment() {
     private var mListFragment = ArrayList<NewsListFragment>()
     private var mIsfresh = false;
     private lateinit var mNewsFragmentAdapter:NewsFragmentAdapter
-    override val toolbarTitle: String
-        get() = ""
-
     override fun onBindLayout(): Int {
         return R.layout.fragment_news_main
     }
