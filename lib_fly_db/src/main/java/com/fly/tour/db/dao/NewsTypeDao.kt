@@ -21,37 +21,38 @@ import java.util.ArrayList
 class NewsTypeDao(context: Context) {
     private val mDatabase: SQLiteDatabase
 
-    val listNewsType: List<NewsType>?
-        get() {
-            val query = "select * from " + NewsDBConfig.NewsType.TABLE_NAME
-            val cursor = mDatabase.rawQuery(query, null)
-            var typeList: MutableList<NewsType>? = null
-            if (cursor != null && cursor.count > 0) {
-                typeList = ArrayList()
-                while (cursor.moveToNext()) {
-                    val id = cursor.getInt(0)
-                    val typename = cursor.getString(1)
-                    val addtime = cursor.getString(2)
-                    val newsType = NewsType()
-                    newsType.id = id
-                    newsType.typename = typename
-                    newsType.addtime = addtime
-                    typeList.add(newsType)
-                }
-            }
-            return typeList
-        }
-    val isEmpty: Boolean
-        get() {
-            val sql = "select * from " + NewsDBConfig.NewsType.TABLE_NAME
-            val cursor = mDatabase.rawQuery(sql, null)
-            return if (cursor != null && cursor.count > 0) {
-                false
-            } else true
-        }
-
     init {
         mDatabase = NewsDBHelper.getInstance(context)!!.readableDatabase
+    }
+
+    fun getListNewsType(): List<NewsType>? {
+        val query = "select * from " + NewsDBConfig.NewsType.TABLE_NAME
+        val cursor = mDatabase.rawQuery(query, null)
+        var typeList: MutableList<NewsType>? = null
+        if (cursor != null && cursor.count > 0) {
+            typeList = ArrayList()
+            while (cursor.moveToNext()) {
+                val id = cursor.getInt(0)
+                val typename = cursor.getString(1)
+                val addtime = cursor.getString(2)
+                val newsType = NewsType()
+                newsType.id = id
+                newsType.typename = typename
+                newsType.addtime = addtime
+                typeList.add(newsType)
+            }
+        }
+        return typeList
+    }
+
+    fun isEmpty(): Boolean {
+        val sql = "select * from " + NewsDBConfig.NewsType.TABLE_NAME
+        val cursor = mDatabase.rawQuery(sql, null)
+        return if (cursor != null && cursor.count > 0) {
+            false
+        } else {
+            true
+        }
     }
 
     fun addNewsType(typename: String): Boolean {
@@ -68,7 +69,11 @@ class NewsTypeDao(context: Context) {
     }
 
     fun deleteNewsType(id: Int): Boolean {
-        return mDatabase.delete(NewsDBConfig.NewsType.TABLE_NAME, "id = ?", arrayOf(id.toString() + "")) > 0
+        return mDatabase.delete(
+            NewsDBConfig.NewsType.TABLE_NAME,
+            "id = ?",
+            arrayOf(id.toString() + "")
+        ) > 0
     }
 
     fun addListNewStype(newsTypeList: List<NewsType>) {

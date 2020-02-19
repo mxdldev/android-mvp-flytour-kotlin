@@ -16,7 +16,7 @@ import com.fly.tour.me.contract.NewsTypeListContract
 class NewsTypeListModel(context: Context) : BaseModel(context), NewsTypeListContract.Model {
     private var mNewsTypeDao: NewsTypeDao = NewsTypeDao(context)
     override fun getListNewsType(): List<NewsType>? {
-        return mNewsTypeDao.listNewsType
+        return mNewsTypeDao.getListNewsType()
     }
 
     override fun deleteNewsTypeById(id: Int): Boolean {

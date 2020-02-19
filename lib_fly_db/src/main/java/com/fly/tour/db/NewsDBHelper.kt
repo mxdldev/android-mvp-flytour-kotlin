@@ -28,7 +28,9 @@ class NewsDBHelper private constructor(context: Context) : SQLiteOpenHelper(cont
         fun getInstance(context: Context): NewsDBHelper? {
             if (mNewsDBHelper == null) {
                 synchronized(NewsDBHelper::class.java) {
-                    mNewsDBHelper = NewsDBHelper(context)
+                    if (mNewsDBHelper == null) {
+                        mNewsDBHelper = NewsDBHelper(context)
+                    }
                 }
             }
             return mNewsDBHelper

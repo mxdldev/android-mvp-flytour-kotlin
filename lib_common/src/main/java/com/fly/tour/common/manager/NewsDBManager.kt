@@ -3,7 +3,6 @@ package com.fly.tour.common.manager
 import android.content.Context
 
 import com.fly.tour.common.R
-import com.fly.tour.common.util.log.KLog
 import com.fly.tour.db.dao.NewsDetailDao
 import com.fly.tour.db.dao.NewsTypeDao
 import com.fly.tour.db.entity.NewsDetail
@@ -12,9 +11,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 import java.io.BufferedReader
-import java.io.InputStream
 import java.io.InputStreamReader
-import java.lang.reflect.Type
 
 /**
  * Description: <NewsDBManager><br>
@@ -25,12 +22,13 @@ import java.lang.reflect.Type
 </NewsDBManager> */
 class NewsDBManager private constructor(private val mContext: Context) {
 
-    val listNewsType: List<NewsType>?
-        get() = NewsTypeDao(mContext).listNewsType
+    fun getListNewsType(): List<NewsType>?{
+        return  NewsTypeDao(mContext).getListNewsType()
+    }
 
     fun initNewsDB() {
         val mNewsTypeDao = NewsTypeDao(mContext)
-        if (mNewsTypeDao.isEmpty) {
+        if (mNewsTypeDao.isEmpty()) {
             val gson = Gson()
             val type = object : TypeToken<List<NewsType>>() {
 

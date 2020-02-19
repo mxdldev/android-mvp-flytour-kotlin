@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fly.tour.common.base.BaseAdapter.OnItemClickListener
 import com.fly.tour.common.base.BaseRefreshFragment
 import com.fly.tour.common.event.KeyCode
+import com.fly.tour.common.event.me.NewsDetailCurdEvent
 import com.fly.tour.db.entity.NewsDetail
 import com.fly.tour.db.entity.NewsType
 import com.fly.tour.news.NewsDetailActivity
@@ -15,6 +16,8 @@ import com.fly.tour.news.contract.NewsListContract
 import com.fly.tour.news.model.NewsListModel
 import com.fly.tour.news.presenter.NewsListPresenter
 import kotlinx.android.synthetic.main.fragment_news_list.*
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 /**
  * Description: <NewsListFragment><br>
@@ -52,7 +55,7 @@ class NewsListFragment :
         mRecViewNewsDetail?.adapter = mNewsListAdapter
         mNewsListAdapter?.setItemClickListener(object : OnItemClickListener<NewsDetail> {
             override fun onItemClick(e: NewsDetail, position: Int) {
-                NewsDetailActivity.startNewsDetailActivity(mActivity,e.id)
+                NewsDetailActivity.startNewsDetailActivity(mActivity, e.id)
             }
         })
     }
@@ -83,6 +86,13 @@ class NewsListFragment :
 
     override fun onAutoLoadEvent() {
         mPresenter?.refreshData()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onEvent(curdEvent: NewsDetailCurdEvent<*>) {
+        if (curdEvent.code == mNewsType?.id) {
+            autoLoadData()
+        }
     }
 
     companion object {

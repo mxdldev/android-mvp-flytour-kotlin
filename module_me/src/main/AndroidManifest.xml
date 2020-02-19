@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewsDetailAddActivity"></activity>
+        <activity android:name=".NewsDetailAddActivity"
+            android:theme="@style/AppTheme.BackBar"
+            android:label="新闻内容添加"
+            />
         <activity
             android:name=".NewsTypeListActivity"
             android:label="新闻类型列表"

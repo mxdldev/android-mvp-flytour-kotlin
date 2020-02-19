@@ -6,6 +6,7 @@ import com.fly.tour.common.base.BaseActivity
 import com.fly.tour.common.provider.IFindProvider
 import com.fly.tour.common.provider.IMeProvider
 import com.fly.tour.common.provider.INewsProvider
+import com.fly.tour.common.util.ToastUtil
 import com.fly.tour.main.entity.MainChannel
 import kotlinx.android.synthetic.main.activity_main_index.*
 

@@ -1,18 +1,18 @@
 package com.fly.tour.news.fragment
 
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.FragmentTransaction
 import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
 import com.fly.tour.common.base.BaseFragment
+import com.fly.tour.common.event.me.NewsTypeCrudEvent
 import com.fly.tour.common.manager.NewsDBManager
+import com.fly.tour.common.util.log.KLog
 import com.fly.tour.news.R
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import kotlinx.android.synthetic.main.fragment_news_main.*
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 /**
  * Description: <MainNewsFragment><br>
@@ -88,7 +88,7 @@ class MainNewsFragment : BaseFragment() {
         }
     }
     fun initNewsListFragment(){
-        val listNewsType = NewsDBManager.getInstance(mActivity)?.listNewsType
+        val listNewsType = NewsDBManager.getInstance(mActivity)?.getListNewsType()
         mListFragment.clear()
         titles.clear()
         if (listNewsType != null) {
@@ -97,5 +97,22 @@ class MainNewsFragment : BaseFragment() {
                 titles.add(newsType.typename!!)
             }
         }
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        KLog.v("MYTAG", "onHiddenChanged start...$hidden")
+        if (mIsfresh && !hidden) {
+            KLog.v("MYTAG", "ViewPager refresh start...")
+            mIsfresh = false
+            mViewPager.currentItem = mListFragment.size - 1
+            initNewsListFragment()
+            //mViewPager.setOffscreenPageLimit(mListFragments.size());
+            mNewsFragmentAdapter.refreshViewPager(mListFragment)
+        }
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onEvent(event: NewsTypeCrudEvent<Any>) {
+        mIsfresh = true
     }
 }
