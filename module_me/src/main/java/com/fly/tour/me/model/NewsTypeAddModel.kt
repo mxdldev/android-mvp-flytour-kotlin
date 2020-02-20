@@ -13,7 +13,7 @@ import com.fly.tour.me.contract.NewsTypeAddContract
  * Update:     <br>
  */
 class NewsTypeAddModel(context: Context) : BaseModel(context), NewsTypeAddContract.Model {
-    var mNewsTypeDao: NewsTypeDao = NewsTypeDao(context)
+    private val mNewsTypeDao: NewsTypeDao by lazy { NewsTypeDao(context) }
     override fun addNewsType(type: String): Boolean {
         return mNewsTypeDao.addNewsType(type)
     }

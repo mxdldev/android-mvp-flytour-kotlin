@@ -1,7 +1,9 @@
 package com.refresh.lib
 
 import android.content.Context
+import android.os.Build
 import android.util.AttributeSet
+import androidx.annotation.RequiresApi
 
 /**
  * Description: <小菊花样式的刷新控件><br>
@@ -9,10 +11,10 @@ import android.util.AttributeSet
  * Date:        2019/2/25<br>
  * Version:     V1.0.0<br>
  * Update:     <br>
-</小菊花样式的刷新控件> */
+ */
 class DaisyRefreshLayout(context: Context, attrs: AttributeSet) :
     BaseRefreshLayout(context, attrs) {
-    private val mDaisyHeaderView: DaisyHeaderView?
+    private val mDaisyHeaderView: DaisyHeaderView
     private val mDaisyFooterView: DaisyFooterView
     override var isRefreshing: Boolean
         get() = super.isRefreshing
@@ -60,6 +62,7 @@ class DaisyRefreshLayout(context: Context, attrs: AttributeSet) :
         mDaisyHeaderView?.onRefresh()
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun setLoadMore(loadMore: Boolean) {
         mDaisyFooterView.setLoadMore(loadMore)
         super.setLoadMore(loadMore)

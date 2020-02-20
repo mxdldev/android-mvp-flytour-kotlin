@@ -14,7 +14,7 @@ import com.fly.tour.me.contract.NewsTypeListContract
  * Update:     <br>
  */
 class NewsTypeListModel(context: Context) : BaseModel(context), NewsTypeListContract.Model {
-    private var mNewsTypeDao: NewsTypeDao = NewsTypeDao(context)
+    private val mNewsTypeDao: NewsTypeDao by lazy { NewsTypeDao(context) }
     override fun getListNewsType(): List<NewsType>? {
         return mNewsTypeDao.getListNewsType()
     }

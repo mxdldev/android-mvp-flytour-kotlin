@@ -20,7 +20,9 @@ import java.util.ArrayList
  */
 class NewsDetailDao(context: Context) {
     private val mDatabase: SQLiteDatabase
-
+    init {
+        mDatabase = NewsDBHelper.getInstance(context)!!.readableDatabase
+    }
     val isEmpty: Boolean
         get() {
             val sql = "select * from " + NewsDBConfig.NewsDetail.TABLE_NAME
@@ -29,10 +31,6 @@ class NewsDetailDao(context: Context) {
                 false
             } else true
         }
-
-    init {
-        mDatabase = NewsDBHelper.getInstance(context)!!.readableDatabase
-    }
 
     fun addNewsDetail(type: Int, title: String, content: String): Boolean {
         val values = ContentValues()

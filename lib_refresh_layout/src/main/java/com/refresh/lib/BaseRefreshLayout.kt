@@ -16,7 +16,7 @@ abstract class BaseRefreshLayout(context: Context, attrs: AttributeSet) : SuperS
     private var isEnableLoadMore = true//是否启用上拉加载更多
     protected lateinit var mOnRefreshListener: OnRefreshListener//下拉刷新监听器
     protected lateinit var mOnLoadMoreListener: OnLoadMoreListener//上拉加载更多监听器
-    protected var mOnAutoLoadListener: OnAutoLoadListener? = null//自动加载的回调
+    protected lateinit var mOnAutoLoadListener: OnAutoLoadListener//自动加载的回调
 
     interface OnRefreshListener {
         fun onRefresh()

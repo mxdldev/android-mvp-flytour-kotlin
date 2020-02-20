@@ -13,15 +13,8 @@ import com.fly.tour.news.contract.NewsDetailContract
  * Version:     V1.0.0<br>
  * Update:     <br>
  */
-/**
- * Description: <NewsDetailModel><br>
- * Author:      mxdl<br>
- * Date:        2020/2/17<br>
- * Version:     V1.0.0<br>
- * Update:     <br>
- */
 class NewsDetailModel(context: Context) : BaseModel(context), NewsDetailContract.Model {
-    private var mNewsDetailDao: NewsDetailDao = NewsDetailDao(context)
+    private val mNewsDetailDao: NewsDetailDao by lazy { NewsDetailDao(context) }
     override fun getNewsDetailById(id: Int): NewsDetail? {
         return mNewsDetailDao.getNewsDetailById(id)
     }

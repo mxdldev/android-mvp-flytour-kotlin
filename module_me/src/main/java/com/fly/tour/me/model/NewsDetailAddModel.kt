@@ -13,7 +13,7 @@ import com.fly.tour.me.contract.NewsDetailAddContract
  * Update:     <br>
  */
 class NewsDetailAddModel(content: Context) : BaseModel(content), NewsDetailAddContract.Model {
-    var mNewsDetailDao: NewsDetailDao = NewsDetailDao(context)
+    private val mNewsDetailDao: NewsDetailDao by lazy { NewsDetailDao(context) }
     override fun addNewsDetail(type: Int, title: String, content: String): Boolean {
         return mNewsDetailDao.addNewsDetail(type, title, content)
     }

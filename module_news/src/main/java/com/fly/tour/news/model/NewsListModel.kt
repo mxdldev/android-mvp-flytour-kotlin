@@ -13,15 +13,8 @@ import com.fly.tour.news.contract.NewsListContract
  * Version:     V1.0.0<br>
  * Update:     <br>
  */
-/**
- * Description: <NewsListModel><br>
- * Author:      mxdl<br>
- * Date:        2020/2/16<br>
- * Version:     V1.0.0<br>
- * Update:     <br>
- */
 class NewsListModel(context:Context) : BaseModel(context),NewsListContract.Model {
-    private var mDetailDao = NewsDetailDao(context)
+    private val mDetailDao by lazy { NewsDetailDao(context)}
     override fun getListNewsByType(type: Int): List<NewsDetail>? {
         return mDetailDao.getListNewsByType(type)
     }
