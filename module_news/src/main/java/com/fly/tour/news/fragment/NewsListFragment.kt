@@ -89,7 +89,7 @@ class NewsListFragment :
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onEvent(curdEvent: NewsDetailCurdEvent<*>) {
+    fun onEvent(curdEvent: NewsDetailCurdEvent<Any>) {
         if (curdEvent.code == mNewsType?.id) {
             autoLoadData()
         }
