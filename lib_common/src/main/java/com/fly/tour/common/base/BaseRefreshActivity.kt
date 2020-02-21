@@ -26,19 +26,19 @@ abstract class BaseRefreshActivity<M : BaseModel, V : BaseRefreshView<T>, P : Ba
     fun initRefreshView() {
         mRefreshLayout = findViewById(onBindRreshLayout())
         // 下拉刷新
-        mRefreshLayout.setOnRefreshListener(object : BaseRefreshLayout.OnRefreshListener {
+        mRefreshLayout?.setOnRefreshListener(object : BaseRefreshLayout.OnRefreshListener {
             override fun onRefresh() {
                 onRefreshEvent()
             }
         })
         // 上拉加载
-        mRefreshLayout.setOnLoadMoreListener(object : BaseRefreshLayout.OnLoadMoreListener {
+        mRefreshLayout?.setOnLoadMoreListener(object : BaseRefreshLayout.OnLoadMoreListener {
             override fun onLoadMore() {
                 onLoadMoreEvent()
             }
         })
         // 自动加载
-        mRefreshLayout.setOnAutoLoadListener(object : BaseRefreshLayout.OnAutoLoadListener {
+        mRefreshLayout?.setOnAutoLoadListener(object : BaseRefreshLayout.OnAutoLoadListener {
             override fun onAutoLoad() {
                 onAutoLoadEvent()
             }
@@ -48,23 +48,23 @@ abstract class BaseRefreshActivity<M : BaseModel, V : BaseRefreshView<T>, P : Ba
     protected abstract fun onBindRreshLayout(): Int
 
     override fun enableRefresh(b: Boolean) {
-        mRefreshLayout.setEnableRefresh(b)
+        mRefreshLayout?.setEnableRefresh(b)
     }
 
     override fun enableLoadMore(b: Boolean) {
-        mRefreshLayout.setEnableLoadMore(b)
+        mRefreshLayout?.setEnableLoadMore(b)
     }
 
     override fun stopRefresh() {
-        mRefreshLayout.isRefreshing = false
+        mRefreshLayout?.isRefreshing = false
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun stopLoadMore() {
-        mRefreshLayout.setLoadMore(false)
+        mRefreshLayout?.setLoadMore(false)
     }
 
     override fun autoLoadData() {
-        mRefreshLayout.autoRefresh()
+        mRefreshLayout?.autoRefresh()
     }
 }

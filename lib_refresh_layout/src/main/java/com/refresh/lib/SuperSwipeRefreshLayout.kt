@@ -306,7 +306,7 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
             setTargetOffsetTopAndBottom(offset, false /* requires update */)
         }
 
-        override fun setAnimationListener(listener: AnimationListener) {
+        override fun setAnimationListener(listener: AnimationListener?) {
             super.setAnimationListener(listener)
         }
     }
@@ -500,12 +500,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
                 setAnimationProgress(interpolatedTime)
             }
         }
-        mScaleAnimation!!.duration = mMediumAnimationDuration.toLong()
-        if (listener != null) {
-            mHeadViewContainer!!.setAnimationListener(listener)
-        }
-        mHeadViewContainer!!.clearAnimation()
-        mHeadViewContainer!!.startAnimation(mScaleAnimation)
+        mScaleAnimation?.duration = mMediumAnimationDuration.toLong()
+        mHeadViewContainer?.setAnimationListener(listener)
+        mHeadViewContainer?.clearAnimation()
+        mHeadViewContainer?.startAnimation(mScaleAnimation)
     }
 
     private fun setAnimationProgress(progress: Float) {
@@ -543,10 +541,10 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
                 setAnimationProgress(1 - interpolatedTime)
             }
         }
-        mScaleDownAnimation!!.duration = SCALE_DOWN_DURATION.toLong()
-        mHeadViewContainer!!.setAnimationListener(listener)
-        mHeadViewContainer!!.clearAnimation()
-        mHeadViewContainer!!.startAnimation(mScaleDownAnimation)
+        mScaleDownAnimation?.duration = SCALE_DOWN_DURATION.toLong()
+        mHeadViewContainer?.setAnimationListener(listener)
+        mHeadViewContainer?.clearAnimation()
+        mHeadViewContainer?.startAnimation(mScaleDownAnimation)
     }
 
     /**
@@ -914,15 +912,15 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
                     if (!mScale) {
                         listener = object : AnimationListener {
 
-                            override fun onAnimationStart(animation: Animation) {}
+                            override fun onAnimationStart(animation: Animation?) {}
 
-                            override fun onAnimationEnd(animation: Animation) {
+                            override fun onAnimationEnd(animation: Animation?) {
                                 if (!mScale) {
                                     startScaleDownAnimation(null)
                                 }
                             }
 
-                            override fun onAnimationRepeat(animation: Animation) {}
+                            override fun onAnimationRepeat(animation: Animation?) {}
 
                         }
                     }
@@ -1074,11 +1072,9 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
         mAnimateToCorrectPosition.reset()
         mAnimateToCorrectPosition.duration = ANIMATE_TO_TRIGGER_DURATION.toLong()
         mAnimateToCorrectPosition.interpolator = mDecelerateInterpolator
-        if (listener != null) {
-            mHeadViewContainer!!.setAnimationListener(listener)
-        }
-        mHeadViewContainer!!.clearAnimation()
-        mHeadViewContainer!!.startAnimation(mAnimateToCorrectPosition)
+        mHeadViewContainer?.setAnimationListener(listener)
+        mHeadViewContainer?.clearAnimation()
+        mHeadViewContainer?.startAnimation(mAnimateToCorrectPosition)
     }
 
     private fun animateOffsetToStartPosition(
@@ -1092,11 +1088,9 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
             mAnimateToStartPosition.reset()
             mAnimateToStartPosition.duration = ANIMATE_TO_START_DURATION.toLong()
             mAnimateToStartPosition.interpolator = mDecelerateInterpolator
-            if (listener != null) {
-                mHeadViewContainer!!.setAnimationListener(listener)
-            }
-            mHeadViewContainer!!.clearAnimation()
-            mHeadViewContainer!!.startAnimation(mAnimateToStartPosition)
+            mHeadViewContainer?.setAnimationListener(listener)
+            mHeadViewContainer?.clearAnimation()
+            mHeadViewContainer?.startAnimation(mAnimateToStartPosition)
         }
         resetTargetLayoutDelay(ANIMATE_TO_START_DURATION)
     }
@@ -1162,18 +1156,16 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
                 moveToStart(interpolatedTime)
             }
         }
-        mScaleDownToStartAnimation!!.duration = SCALE_DOWN_DURATION.toLong()
-        if (listener != null) {
-            mHeadViewContainer!!.setAnimationListener(listener)
-        }
-        mHeadViewContainer!!.clearAnimation()
-        mHeadViewContainer!!.startAnimation(mScaleDownToStartAnimation)
+        mScaleDownToStartAnimation?.duration = SCALE_DOWN_DURATION.toLong()
+        mHeadViewContainer?.setAnimationListener(listener)
+        mHeadViewContainer?.clearAnimation()
+        mHeadViewContainer?.startAnimation(mScaleDownToStartAnimation)
     }
 
     private fun setTargetOffsetTopAndBottom(offset: Int, requiresUpdate: Boolean) {
-        mHeadViewContainer!!.bringToFront()
-        mHeadViewContainer!!.offsetTopAndBottom(offset)
-        mCurrentTargetOffsetTop = mHeadViewContainer!!.top
+        mHeadViewContainer?.bringToFront()
+        mHeadViewContainer?.offsetTopAndBottom(offset)
+        mCurrentTargetOffsetTop = mHeadViewContainer?.top ?: 0
         if (requiresUpdate && Build.VERSION.SDK_INT < 11) {
             invalidate()
         }
@@ -1225,12 +1217,12 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
 
         public override fun onAnimationStart() {
             super.onAnimationStart()
-            mListener?.onAnimationStart(null)
+            mListener?.onAnimationStart(animation)
         }
 
         public override fun onAnimationEnd() {
             super.onAnimationEnd()
-            mListener?.onAnimationEnd(null)
+            mListener?.onAnimationEnd(animation)
         }
     }
 

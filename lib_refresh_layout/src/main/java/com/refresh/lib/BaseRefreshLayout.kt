@@ -11,12 +11,13 @@ import android.view.MotionEvent
  * Version:     V1.0.0<br>
  * Update:     <br>
 </BaseRefreshLayout> */
-abstract class BaseRefreshLayout(context: Context, attrs: AttributeSet) : SuperSwipeRefreshLayout(context, attrs) {
+abstract class BaseRefreshLayout(context: Context, attrs: AttributeSet) :
+    SuperSwipeRefreshLayout(context, attrs) {
     private var isEnableRefresh = true//是否启用下拉刷新
     private var isEnableLoadMore = true//是否启用上拉加载更多
-    protected lateinit var mOnRefreshListener: OnRefreshListener//下拉刷新监听器
-    protected lateinit var mOnLoadMoreListener: OnLoadMoreListener//上拉加载更多监听器
-    protected lateinit var mOnAutoLoadListener: OnAutoLoadListener//自动加载的回调
+    protected var mOnRefreshListener: OnRefreshListener? = null//下拉刷新监听器
+    protected var mOnLoadMoreListener: OnLoadMoreListener? = null//上拉加载更多监听器
+    protected var mOnAutoLoadListener: OnAutoLoadListener? = null//自动加载的回调
 
     interface OnRefreshListener {
         fun onRefresh()
@@ -66,9 +67,7 @@ abstract class BaseRefreshLayout(context: Context, attrs: AttributeSet) : SuperS
         postDelayed({
             showRefresh()
             isRefreshing = true
-            if (mOnAutoLoadListener != null) {
-                mOnAutoLoadListener.onAutoLoad()
-            }
+            mOnAutoLoadListener?.onAutoLoad()
         }, (1000 * 1).toLong())
     }
 

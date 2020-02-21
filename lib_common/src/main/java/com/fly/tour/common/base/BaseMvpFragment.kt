@@ -17,16 +17,12 @@ abstract class BaseMvpFragment<M : BaseModel, V, P : BasePresenter<M, V>> : Base
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mPresenter = initPresenter()
-        if (mPresenter != null) {
-            mPresenter!!.attach(this as V)
-            mPresenter!!.injectLifecycle(mActivity)
-        }
+        mPresenter?.attach(this as V)
+        mPresenter?.injectLifecycle(mActivity)
     }
 
     override fun onDestroy() {
-        if (mPresenter != null) {
-            mPresenter!!.detach()
-        }
+        mPresenter?.detach()
         super.onDestroy()
     }
 

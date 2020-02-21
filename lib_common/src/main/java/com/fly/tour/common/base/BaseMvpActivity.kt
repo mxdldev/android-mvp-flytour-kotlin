@@ -11,15 +11,13 @@ import com.fly.tour.common.mvp.BasePresenter
  * Date:        2018/1/16<br>
  * Version:     V1.0.0<br>
  * Update:     <br>
-*/
+ */
 abstract class BaseMvpActivity<M : BaseModel, V, P : BasePresenter<M, V>> : BaseActivity() {
     protected var mPresenter: P? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         mPresenter = initPresenter()
-        if (mPresenter != null) {
-            mPresenter!!.attach(this as V)
-            mPresenter!!.injectLifecycle(this)
-        }
+        mPresenter?.attach(this as V)
+        mPresenter?.injectLifecycle(this)
         super.onCreate(savedInstanceState)
 
     }
@@ -28,8 +26,6 @@ abstract class BaseMvpActivity<M : BaseModel, V, P : BasePresenter<M, V>> : Base
 
     override fun onDestroy() {
         super.onDestroy()
-        if (mPresenter != null) {
-            mPresenter!!.detach()
-        }
+        mPresenter?.detach()
     }
 }

@@ -1,6 +1,8 @@
 package com.fly.tour.common.base
 
+import android.os.Build
 import android.view.View
+import androidx.annotation.RequiresApi
 
 import com.fly.tour.common.mvp.BaseModel
 import com.fly.tour.common.mvp.BaseRefreshPresenter
@@ -16,7 +18,8 @@ import com.refresh.lib.DaisyRefreshLayout
  * Version:     V1.0.0<br>
  * Update:     <br>
  */
-abstract class BaseRefreshFragment<M : BaseModel, V : BaseRefreshView<T>, P : BaseRefreshPresenter<M, V, T>, T> : BaseMvpFragment<M, V, P>(), BaseRefreshView<T> {
+abstract class BaseRefreshFragment<M : BaseModel, V : BaseRefreshView<T>, P : BaseRefreshPresenter<M, V, T>, T> :
+    BaseMvpFragment<M, V, P>(), BaseRefreshView<T> {
     protected var mRefreshLayout: DaisyRefreshLayout? = null
 
     override fun initCommonView(view: View) {
@@ -26,17 +29,17 @@ abstract class BaseRefreshFragment<M : BaseModel, V : BaseRefreshView<T>, P : Ba
 
     fun initRefreshView(view: View) {
         mRefreshLayout = view.findViewById(onBindRreshLayout())
-        mRefreshLayout!!.setOnRefreshListener(object : BaseRefreshLayout.OnRefreshListener {
+        mRefreshLayout?.setOnRefreshListener(object : BaseRefreshLayout.OnRefreshListener {
             override fun onRefresh() {
                 onRefreshEvent()
             }
         })
-        mRefreshLayout!!.setOnLoadMoreListener(object : BaseRefreshLayout.OnLoadMoreListener {
+        mRefreshLayout?.setOnLoadMoreListener(object : BaseRefreshLayout.OnLoadMoreListener {
             override fun onLoadMore() {
                 onLoadMoreEvent()
             }
         })
-        mRefreshLayout!!.setOnAutoLoadListener(object : BaseRefreshLayout.OnAutoLoadListener {
+        mRefreshLayout?.setOnAutoLoadListener(object : BaseRefreshLayout.OnAutoLoadListener {
             override fun onAutoLoad() {
                 onAutoLoadEvent()
             }
@@ -45,26 +48,24 @@ abstract class BaseRefreshFragment<M : BaseModel, V : BaseRefreshView<T>, P : Ba
 
     protected abstract fun onBindRreshLayout(): Int
     override fun enableRefresh(b: Boolean) {
-        mRefreshLayout!!.setEnableRefresh(b)
+        mRefreshLayout?.setEnableRefresh(b)
     }
 
     override fun enableLoadMore(b: Boolean) {
-        mRefreshLayout!!.setEnableLoadMore(b)
+        mRefreshLayout?.setEnableLoadMore(b)
     }
 
     override fun stopRefresh() {
-        mRefreshLayout!!.isRefreshing = false
+        mRefreshLayout?.isRefreshing = false
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun stopLoadMore() {
-        mRefreshLayout!!.setLoadMore(false)
+        mRefreshLayout?.setLoadMore(false)
     }
 
     override fun autoLoadData() {
-        KLog.v("MYTAG", "autoLoadData start...")
-        if (mRefreshLayout != null) {
-            KLog.v("MYTAG", "autoLoadData1 start...")
-            mRefreshLayout!!.autoRefresh()
-        }
+        KLog.v("MYTAG", "autoLoadData1 start...")
+        mRefreshLayout?.autoRefresh()
     }
 }

@@ -31,7 +31,7 @@ class DaisyRefreshLayout(context: Context, attrs: AttributeSet) :
         setOnPullRefreshListener(object : SuperSwipeRefreshLayout.OnPullRefreshListener {
             override fun onRefresh() {
                 mDaisyHeaderView.onRefresh()
-                mOnRefreshListener.onRefresh()
+                mOnRefreshListener?.onRefresh()
             }
 
             override fun onPullDistance(distance: Int) {
@@ -45,7 +45,7 @@ class DaisyRefreshLayout(context: Context, attrs: AttributeSet) :
         setOnPushLoadMoreListener(object : SuperSwipeRefreshLayout.OnPushLoadMoreListener {
             override fun onLoadMore() {
                 mDaisyFooterView.onLoadMore()
-                mOnLoadMoreListener.onLoadMore()
+                mOnLoadMoreListener?.onLoadMore()
             }
 
             override fun onPushDistance(distance: Int) {
