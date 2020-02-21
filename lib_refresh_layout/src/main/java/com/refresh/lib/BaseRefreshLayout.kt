@@ -67,7 +67,7 @@ abstract class BaseRefreshLayout(context: Context, attrs: AttributeSet) : SuperS
             showRefresh()
             isRefreshing = true
             if (mOnAutoLoadListener != null) {
-                mOnAutoLoadListener!!.onAutoLoad()
+                mOnAutoLoadListener.onAutoLoad()
             }
         }, (1000 * 1).toLong())
     }

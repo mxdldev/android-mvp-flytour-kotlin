@@ -19,7 +19,7 @@ class DaisyRefreshLayout(context: Context, attrs: AttributeSet) :
     override var isRefreshing: Boolean
         get() = super.isRefreshing
         set(refreshing) {
-            mDaisyHeaderView!!.setRefreshing(refreshing)
+            mDaisyHeaderView.setRefreshing(refreshing)
             super.isRefreshing = refreshing
         }
 

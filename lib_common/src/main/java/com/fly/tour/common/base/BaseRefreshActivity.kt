@@ -1,5 +1,7 @@
 package com.fly.tour.common.base
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.fly.tour.common.mvp.BaseModel
 import com.fly.tour.common.mvp.BaseRefreshPresenter
 import com.fly.tour.common.mvp.BaseRefreshView
@@ -57,6 +59,7 @@ abstract class BaseRefreshActivity<M : BaseModel, V : BaseRefreshView<T>, P : Ba
         mRefreshLayout.isRefreshing = false
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun stopLoadMore() {
         mRefreshLayout.setLoadMore(false)
     }
