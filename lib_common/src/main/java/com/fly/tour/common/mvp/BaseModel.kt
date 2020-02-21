@@ -12,10 +12,10 @@ import com.trello.rxlifecycle2.LifecycleProvider
  * Update:     <br>
 </BaseModel> */
 open class BaseModel(val context: Context) {
-    var lifecycle: LifecycleProvider<*>? = null
+    var lifecycle: LifecycleProvider<Any>? = null
         private set
 
-    fun injectLifecycle(lifecycle: LifecycleProvider<*>) {
+    fun injectLifecycle(lifecycle: LifecycleProvider<Any>) {
         this.lifecycle = lifecycle
     }
 

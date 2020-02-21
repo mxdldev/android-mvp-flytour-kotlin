@@ -62,23 +62,15 @@ class ActivityManager private constructor() {
      * 结束指定的Activity
      */
     fun finishActivity(activity: Activity?) {
-        var activity = activity
-        if (activity != null) {
-            activityStack.remove(activity)
-            activity.finish()
-            activity = null
-        }
+        activityStack.remove(activity)
+        activity?.finish()
     }
 
     /**
      * 移除指定的Activity
      */
     fun removeActivity(activity: Activity?) {
-        var activity = activity
-        if (activity != null) {
-            activityStack.remove(activity)
-            activity = null
-        }
+        activityStack.remove(activity)
     }
 
     /**
@@ -155,7 +147,8 @@ class ActivityManager private constructor() {
     fun appExit(context: Context, isBackground: Boolean?) {
         try {
             finishAllActivity()
-            val activityMgr = context.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
+            val activityMgr =
+                context.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
             activityMgr.restartPackage(context.packageName)
         } catch (e: Exception) {
 
@@ -172,7 +165,7 @@ class ActivityManager private constructor() {
         @Volatile
         private var instance: ActivityManager? = null
 
-        fun getInstance(): ActivityManager?{
+        fun getInstance(): ActivityManager? {
             if (instance == null) {
                 synchronized(ActivityManager::class.java) {
                     if (instance == null) {

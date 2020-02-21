@@ -18,7 +18,7 @@ object ToastUtil {
     }
 
     fun showToast(resid: Int) {
-        Toast.makeText(BaseApplication.instance, BaseApplication.instance!!.getString(resid), Toast.LENGTH_SHORT)
+        Toast.makeText(BaseApplication.instance, BaseApplication.instance?.getString(resid), Toast.LENGTH_SHORT)
                 .show()
     }
 }

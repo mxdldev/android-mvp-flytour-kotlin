@@ -39,15 +39,13 @@ abstract class BasePresenter<M : BaseModel, V>(protected var mContext: Context) 
     }
 
     fun detachModel() {
-        mModel!!.destory()
+        mModel?.destory()
         mModel = null
     }
 
     abstract fun initModel(): M
 
     fun injectLifecycle(lifecycle: LifecycleProvider<*>) {
-        if (mModel != null) {
-            mModel!!.injectLifecycle(lifecycle)
-        }
+        mModel?.injectLifecycle(lifecycle)
     }
 }

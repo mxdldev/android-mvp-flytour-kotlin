@@ -11,7 +11,7 @@ import android.view.MotionEvent
  * Date:        2018/8/24<br>
  * Version:     V1.0.0<br>
  * Update:     <br>
-</RecyclerView空白区域点击监听> */
+ */
 class TouchyRecyclerView(context: Context, attrs: AttributeSet) : androidx.recyclerview.widget.RecyclerView(context, attrs) {
     private var listener: OnNoChildClickListener? = null
 
