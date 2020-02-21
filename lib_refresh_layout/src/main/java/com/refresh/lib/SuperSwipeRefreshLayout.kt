@@ -1225,12 +1225,12 @@ open class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) :
 
         public override fun onAnimationStart() {
             super.onAnimationStart()
-            mListener?.onAnimationStart(animation)
+            mListener?.onAnimationStart(null)
         }
 
         public override fun onAnimationEnd() {
             super.onAnimationEnd()
-            mListener?.onAnimationEnd(animation)
+            mListener?.onAnimationEnd(null)
         }
     }
 

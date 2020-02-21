@@ -39,6 +39,8 @@ class NewsListPresenter(context: Context) :
                 mView?.refreshData(listData)
             } else {
                 mView?.showNoDataView()
+                mView?.enableRefresh(false)
+                mView?.enableLoadMore(false)
             }
             mView?.stopRefresh()
         }, 2 * 1000)

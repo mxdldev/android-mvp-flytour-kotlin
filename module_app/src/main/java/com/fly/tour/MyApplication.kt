@@ -13,6 +13,6 @@ import com.fly.tour.common.manager.NewsDBManager
 class MyApplication : BaseApplication() {
     override fun onCreate() {
         super.onCreate()
-        NewsDBManager.getInstance(this)!!.initNewsDB()
+        NewsDBManager.getInstance(this)?.initNewsDB()
     }
 }

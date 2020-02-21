@@ -33,24 +33,22 @@ import org.greenrobot.eventbus.ThreadMode
 abstract class BaseFragment : Fragment(), BaseView {
     protected lateinit var mActivity: RxAppCompatActivity
     protected lateinit var mView: View
-    protected var mTxtTitle: TextView? = null
-    protected var mToolbar: Toolbar? = null
+    protected lateinit var mTxtTitle: TextView
+    protected lateinit var mToolbar: Toolbar
 
     protected var mNetErrorView: NetErrorView? = null
     protected var mNoDataView: NoDataView? = null
     protected var mLoadingInitView: LoadingInitView? = null
     protected var mLoadingTransView: LoadingTransView? = null
 
-    private var mViewStubToolbar: ViewStub? = null
-    private var mViewStubContent: ViewStub? = null
-    private var mViewStubInitLoading: ViewStub? = null
-    private var mViewStubTransLoading: ViewStub? = null
-    private var mViewStubNoData: ViewStub? = null
-    private var mViewStubError: ViewStub? = null
+    private lateinit var mViewStubToolbar: ViewStub
+    private lateinit var mViewStubContent: ViewStub
+    private lateinit var mViewStubInitLoading: ViewStub
+    private lateinit var mViewStubTransLoading: ViewStub
+    private lateinit var mViewStubNoData: ViewStub
+    private lateinit var mViewStubError: ViewStub
     private var isViewCreated = false
     private var isViewVisable = false
-
-    open protected val toolbarTitle: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,12 +73,12 @@ abstract class BaseFragment : Fragment(), BaseView {
         mViewStubError = view.findViewById(R.id.view_stub_error)
 
         if (enableToolbar()) {
-            mViewStubToolbar!!.layoutResource = onBindToolbarLayout()
-            val viewTooBbar = mViewStubToolbar!!.inflate()
+            mViewStubToolbar.layoutResource = onBindToolbarLayout()
+            val viewTooBbar = mViewStubToolbar.inflate()
             initTooBar(viewTooBbar)
         }
-        mViewStubContent!!.layoutResource = onBindLayout()
-        mViewStubContent!!.inflate()
+        mViewStubContent.layoutResource = onBindLayout()
+        mViewStubContent.inflate()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -134,18 +132,20 @@ abstract class BaseFragment : Fragment(), BaseView {
         mTxtTitle = view.findViewById(R.id.toolbar_title)
         if (mToolbar != null) {
             mActivity.setSupportActionBar(mToolbar)
-            mActivity.supportActionBar!!.setDisplayShowTitleEnabled(false)
-            mToolbar!!.setNavigationOnClickListener { mActivity.onBackPressed() }
+            mActivity.supportActionBar?.setDisplayShowTitleEnabled(false)
+            mToolbar.setNavigationOnClickListener { mActivity.onBackPressed() }
         }
         if (mTxtTitle != null) {
-            mTxtTitle!!.text = toolbarTitle
+            mTxtTitle.text = getTootBarTitle()
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun <T> onEvent(event: BaseFragmentEvent<T>) {
     }
-
+    open fun getTootBarTitle(): String{
+        return ""
+    }
     abstract fun onBindLayout(): Int
 
     abstract override fun initData()
@@ -202,19 +202,19 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     private fun showInitLoadView(show: Boolean) {
         if (mLoadingInitView == null) {
-            val view = mViewStubInitLoading!!.inflate()
+            val view = mViewStubInitLoading.inflate()
             mLoadingInitView = view.findViewById(R.id.view_init_loading)
         }
-        mLoadingInitView!!.visibility = if (show) View.VISIBLE else View.GONE
-        mLoadingInitView!!.loading(show)
+        mLoadingInitView?.visibility = if (show) View.VISIBLE else View.GONE
+        mLoadingInitView?.loading(show)
     }
 
 
     private fun showNetWorkErrView(show: Boolean) {
         if (mNetErrorView == null) {
-            val view = mViewStubError!!.inflate()
+            val view = mViewStubError.inflate()
             mNetErrorView = view.findViewById(R.id.view_net_error)
-            mNetErrorView!!.setOnClickListener(View.OnClickListener {
+            mNetErrorView?.setOnClickListener(View.OnClickListener {
                 if (!NetUtil.checkNetToast()) {
                     return@OnClickListener
                 }
@@ -222,36 +222,36 @@ abstract class BaseFragment : Fragment(), BaseView {
                 initData()
             })
         }
-        mNetErrorView!!.visibility = if (show) View.VISIBLE else View.GONE
+        mNetErrorView?.visibility = if (show) View.VISIBLE else View.GONE
     }
 
 
     private fun showNoDataView(show: Boolean) {
         if (mNoDataView == null) {
-            val view = mViewStubNoData!!.inflate()
+            val view = mViewStubNoData.inflate()
             mNoDataView = view.findViewById(R.id.view_no_data)
         }
-        mNoDataView!!.visibility = if (show) View.VISIBLE else View.GONE
+        mNoDataView?.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     private fun showNoDataView(show: Boolean, resid: Int) {
         showNoDataView(show)
         if (show) {
-            mNoDataView!!.setNoDataView(resid)
+            mNoDataView?.setNoDataView(resid)
         }
     }
 
     private fun showTransLoadingView(show: Boolean) {
         if (mLoadingTransView == null) {
-            val view = mViewStubTransLoading!!.inflate()
+            val view = mViewStubTransLoading.inflate()
             mLoadingTransView = view.findViewById(R.id.view_trans_loading)
         }
-        mLoadingTransView!!.visibility = if (show) View.VISIBLE else View.GONE
-        mLoadingTransView!!.loading(show)
+        mLoadingTransView?.visibility = if (show) View.VISIBLE else View.GONE
+        mLoadingTransView?.loading(show)
     }
 
     companion object {
-        protected val TAG = BaseFragment::class.java!!.getSimpleName()
+        protected val TAG = BaseFragment::class.java.getSimpleName()
     }
 
 }

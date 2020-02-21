@@ -12,18 +12,10 @@ import android.view.View
  * Update:     <br></br>
 </MyView> */
 class MyView2 : View {
-    init {
-        println("MyView2 init")
-    }
     @JvmOverloads
     constructor(
         context: Context,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0
-    ) : super(context, attrs, defStyleAttr){
-        println("MyView2 constructor")
-    }
-    fun test(){
-        println("Hello World!")
-    }
+    ) : super(context, attrs, defStyleAttr) {  }
 }

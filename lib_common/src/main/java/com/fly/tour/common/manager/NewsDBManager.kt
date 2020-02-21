@@ -11,6 +11,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 import java.io.BufferedReader
+import java.io.File
 import java.io.InputStreamReader
 
 /**
@@ -22,8 +23,8 @@ import java.io.InputStreamReader
 </NewsDBManager> */
 class NewsDBManager private constructor(private val mContext: Context) {
 
-    fun getListNewsType(): List<NewsType>?{
-        return  NewsTypeDao(mContext).getListNewsType()
+    fun getListNewsType(): List<NewsType>? {
+        return NewsTypeDao(mContext).getListNewsType()
     }
 
     fun initNewsDB() {
@@ -33,7 +34,8 @@ class NewsDBManager private constructor(private val mContext: Context) {
             val type = object : TypeToken<List<NewsType>>() {
 
             }.type
-            val mListNewsType = gson.fromJson<List<NewsType>>(getStringByResId(R.raw.news_type), type)
+            val mListNewsType =
+                gson.fromJson<List<NewsType>>(getStringByResId(R.raw.news_type), type)
             mNewsTypeDao.addListNewStype(mListNewsType)
         }
         val newsDetailDao = NewsDetailDao(mContext)
@@ -42,7 +44,8 @@ class NewsDBManager private constructor(private val mContext: Context) {
             val type = object : TypeToken<List<NewsDetail>>() {
 
             }.type
-            val newsDetailList = gson.fromJson<List<NewsDetail>>(getStringByResId(R.raw.news_detail), type)
+            val newsDetailList =
+                gson.fromJson<List<NewsDetail>>(getStringByResId(R.raw.news_detail), type)
             newsDetailDao.addListNewsDetail(newsDetailList)
         }
     }
@@ -54,13 +57,21 @@ class NewsDBManager private constructor(private val mContext: Context) {
         val stringBuilder = StringBuilder()
         var line: String? = null
         try {
-            while (({line = bufferedReader.readLine()}) != null) {
+//            while (({line = bufferedReader.readLine()}) != null) {
+//                stringBuilder.append(line)
+//            }
+            //以上为Java中的写法，在有些机型中会造成内存溢出，下面为Kotlin中的通用写法
+            val text: List<String> = bufferedReader.readLines()
+            for (line in text) {
                 stringBuilder.append(line)
             }
         } catch (e: Exception) {
             e.printStackTrace()
+        } finally {
+            bufferedReader.close()
+            inputStreamReader.close()
+            inputStream.close()
         }
-
         return stringBuilder.toString()
     }
 
