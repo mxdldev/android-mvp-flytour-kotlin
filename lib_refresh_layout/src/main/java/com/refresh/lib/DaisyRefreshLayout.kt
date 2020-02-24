@@ -59,7 +59,7 @@ class DaisyRefreshLayout(context: Context, attrs: AttributeSet) :
     }
 
     override fun showRefresh() {
-        mDaisyHeaderView?.onRefresh()
+        mDaisyHeaderView.onRefresh()
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
