@@ -33,6 +33,7 @@ inline fun TextView.addTextChangeListenerClosure(
 
 fun TextView.addTextChangeListenerDsl(listener:TextChangeListenerDsl.()->Unit){
     var mListener = TextChangeListenerDsl()
-    mListener.listener()
+    //mListener.listener()
+    mListener.apply(listener)
     this.addTextChangedListener(mListener)
 }

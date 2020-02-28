@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-
 //        txtContent.addTextChangedListener(object : TextWatcher {
 //            override fun afterTextChanged(s: Editable?) {
 //                Log.v(TAG,"afterTextChanged ${s.toString()}")
