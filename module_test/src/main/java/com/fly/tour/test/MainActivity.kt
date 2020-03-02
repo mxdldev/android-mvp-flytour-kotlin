@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.fly.tour.common.util.ToastUtil
-import com.fly.tour.test.view.MyView2
-import com.fly.tour.test.view.Person1
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
