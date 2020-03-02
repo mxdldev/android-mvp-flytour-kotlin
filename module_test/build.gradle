@@ -36,11 +36,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-<<<<<<< HEAD
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3'
-=======
-    //implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     //implementation 'com.android.support:multidex:1.0.3'
->>>>>>> b05ec5ba2cfc1b8b505b985998da925f5f6b8f5f
     implementation project(':lib_common')
 }

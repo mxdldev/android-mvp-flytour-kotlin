@@ -5,11 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.fly.tour.common.util.ToastUtil
-<<<<<<< HEAD
-=======
-import com.fly.tour.test.dsl.addTextChangeListenerClosure
 import com.fly.tour.test.dsl.addTextChangeListenerDsl
->>>>>>> b05ec5ba2cfc1b8b505b985998da925f5f6b8f5f
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -17,18 +13,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
-<<<<<<< HEAD
-    val TAG = "MYTAG"
-=======
     //var TAG = MainActivity::class.simpleName
     var TAG = "MYTAG"
 
->>>>>>> b05ec5ba2cfc1b8b505b985998da925f5f6b8f5f
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-<<<<<<< HEAD
         //testOnClick()
         //testThread()
         //test1
@@ -39,12 +30,14 @@ class MainActivity : AppCompatActivity() {
         }
         Log.e(TAG, "主线程执行结束")
     }
+
     private fun testThread() = runBlocking {
         repeat(8) {
             Log.e("TAG", "协程执行$it 线程id：${Thread.currentThread().id}")
             delay(1000)
         }
     }
+
     val test1 = runBlocking {
         repeat(8) {
             Log.e("TAG", "协程执行$it 线程id：${Thread.currentThread().id}")
@@ -53,8 +46,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun testOnClick() {
-=======
->>>>>>> b05ec5ba2cfc1b8b505b985998da925f5f6b8f5f
         btn.setOnClickListener { v -> ToastUtil.showToast("ok") }
         btn.setOnClickListener() { v -> ToastUtil.showToast("ok") }
         btn.setOnClickListener({ v -> ToastUtil.showToast("ok") })
@@ -89,8 +80,8 @@ class MainActivity : AppCompatActivity() {
 //        })
 
         txtContent.addTextChangeListenerDsl {
-            onTextChanged{
-                s,start,before,count -> Log.v(TAG,"s value:$s")
+            onTextChanged { s, start, before, count ->
+                Log.v(TAG, "s value:$s")
             }
         }
     }
